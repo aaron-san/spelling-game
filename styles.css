@@ -68,7 +68,7 @@ select#level-selector {
 
 
 #image {
-    width: 400px;
+    width: 320px;
     padding: 5px;
     margin: 10px;
     text-align: center;
@@ -90,6 +90,8 @@ select#level-selector {
 
 
 #lettersContainer {
+    display: flex;
+    flex-wrap: wrap;
     width: 80vw;
     height: auto;
     padding: 5px;
