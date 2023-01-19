@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1 class="title">Spelling Quiz</h1> -->
+    <header>
+        <div id="title">Spelling Game!</div>
+        <!-- <div id="level-selector"> -->
+            <select name="level" id="level-selector">
+                <option value="EASY">かんたん</option>
+                <option value="DIFFICULT">むずかしい</option>
+            </select>
+        <!-- </div> -->
+        <!-- <nav></nav> -->
+    </header>
+    <main>
+        <div class="container">
+
+            <div class="categories-container">
+                <div class="category fruits">果物</div>
+                <div class="category animals">動物</div>
+                <!-- <div class="category foods">食べ物</div> -->
+                <div class="category foods">食べ物</div>
+            </div>
+            <div id="game-screen">
+            <div id="word-container">
+                <div id="image" style="display: none;">
+                    <div id="cover"></div>
+                    <img src="" alt="" >
+                </div>
+                <div id="lettersContainer"></div>
+                <div class="button-container">
+                    <!-- <button id="start-button">START!</button> -->
+                    <button id="pass-button">PASS</button>
+                </div>
+            </div>
+            <div id="score-container">
+                SCORE
+                <div id="total-score"></div>
+            </div>
+            <div id="new-points"></div>
+        </div>
+        </div>
+    </main>
+<footer></footer>
+    
+</body>
+</html>
