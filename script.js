@@ -1,14 +1,14 @@
-let title = document.querySelector("#title");
+var title = document.querySelector("#title");
 title.addEventListener("click", () => {
-  let gameScreen = document.querySelector("#game-screen");
+  var gameScreen = document.querySelector("#game-screen");
   gameScreen.style.display = "none";
-  let categoriesContainer = document.querySelector(".categories-container");
+  var categoriesContainer = document.querySelector(".categories-container");
   categoriesContainer.style.display = "flex";
 });
 
-let categoriesContainer = document.querySelector(".categories-container");
+var categoriesContainer = document.querySelector(".categories-container");
 
-let data = {
+var data = {
   feelings: ["happy", "sad"],
   foods: [
     "bread",
@@ -48,24 +48,24 @@ let data = {
 };
 
 // Get the categories from the DOM elements
-let categories = Array.from(categoriesContainer.children);
+var categories = Array.from(categoriesContainer.children);
 
-let categoriesArray = [];
+var categoriesArray = [];
 categories.forEach((el) => {
   categoriesArray.push(el.classList[1]);
 });
 // console.log(categoriesArray);
 
-// let animalsCategory = document.querySelector(".animals");
-// let sportCategory = document.querySelector(".sports");
-// let foodCategory = document.querySelector(".food");
-// let fruitCategory = document.querySelector(".fruits");
+// var animalsCategory = document.querySelector(".animals");
+// var sportCategory = document.querySelector(".sports");
+// var foodCategory = document.querySelector(".food");
+// var fruitCategory = document.querySelector(".fruits");
 
-let gameScreen = document.querySelector("#game-screen");
+var gameScreen = document.querySelector("#game-screen");
 
 for (i = 0; i < categoriesArray.length; i++) {
-  let categoryElement = document.querySelector("." + categoriesArray[i]);
-  let category = categoryElement.classList[1];
+  var categoryElement = document.querySelector("." + categoriesArray[i]);
+  var category = categoryElement.classList[1];
 
   // console.log(data[category]);
   // console.log(itemsArray);
@@ -74,7 +74,7 @@ for (i = 0; i < categoriesArray.length; i++) {
     gameScreen.style.display = "flex";
     categoriesContainer.style.display = "none";
 
-    let words = data[category];
+    var words = data[category];
     // console.log(data[category]);
 
     // All words to lowercase
@@ -87,21 +87,21 @@ for (i = 0; i < categoriesArray.length; i++) {
   });
 }
 
-// let getRandomNum = () => Math.floor(Math.random() * words.length);
+// var getRandomNum = () => Math.floor(Math.random() * words.length);
 
 // Change the word
 // function getRandomWord(words) {
-//   let word = words.pop();
+//   var word = words.pop();
 //   return word;
 // }
 
 function addLevelSelector() {
-  let levelSelector = document.querySelector("select#level-selector");
+  var levelSelector = document.querySelector("select#level-selector");
   levelSelector.style.backgroundColor = "lightgreen";
-  let cover = document.querySelector("#cover");
+  var cover = document.querySelector("#cover");
   // console.log(levelSelector.value);
   levelSelector.addEventListener("change", () => {
-    let letterBoxes = document.querySelectorAll(".letter");
+    var letterBoxes = document.querySelectorAll(".letter");
     // console.log(letterBoxes.length);
     if (letterBoxes.length > 0) {
       letterBoxes[0].focus();
@@ -124,7 +124,7 @@ function checkScore(words, score, category) {
   // console.log("checkScore:", word);
   // console.log("checkScore:", score);
   scoreDiv.classList.remove("show-new-score");
-  let levelSelector = document.querySelector("#level-selector");
+  var levelSelector = document.querySelector("#level-selector");
 
   if (score.every((e) => e === true)) {
     // console.log(totalScore);
@@ -152,23 +152,23 @@ function checkScore(words, score, category) {
 
     if (words.length > 0) {
       // console.log("words.length > 0");
-      let word = words.pop();
+      var word = words.pop();
 
       // console.log("new word:", word);
-      // let letterBoxes = document.querySelectorAll(".letter");
-      let score = Array(word.length).fill(false);
+      // var letterBoxes = document.querySelectorAll(".letter");
+      var score = Array(word.length).fill(false);
 
       // console.log("showNewWord called - A");
       showNewWord(word, category);
       checkLetters(word, words, score, category);
     } else {
-      let passButton = document.querySelector("#pass-button");
+      var passButton = document.querySelector("#pass-button");
       passButton.style.display = "none";
     }
     // levelSelector.disabled = false;
     // console.log("-----------------");
 
-    // let totalScore = document.querySelector("#total-score");
+    // var totalScore = document.querySelector("#total-score");
     // scoreDiv.style.opacity = "0";
     // scoreDiv.style.opacity = "1";
     scoreDiv.style.opacity = "1";
@@ -184,13 +184,13 @@ function showNewWord(word, category) {
   // console.log("showNewWord - word:", word);
   // console.log("showNewWord - words:", words);
   // console.log("showNewWord - score:", score);
-  let levelSelector = document.querySelector("#level-selector");
+  var levelSelector = document.querySelector("#level-selector");
   // console.log(levelSelector.disabled);
   levelSelector.disabled = false;
 
-  let imgDiv = document.querySelector("#image");
+  var imgDiv = document.querySelector("#image");
   imgDiv.style.display = "block";
-  let img = document.querySelector("#image img");
+  var img = document.querySelector("#image img");
 
   img.src = "./assets/images/" + category + "/" + word + ".png";
 
@@ -202,26 +202,26 @@ function showNewWord(word, category) {
   // Create input boxes for each letter of the word
 
   word.split("").forEach(() => {
-    let input = document.createElement("input");
+    var input = document.createElement("input");
     input.className = "letter";
     input.type = "text";
     input.maxLength = 1;
     lettersContainer.appendChild(input);
   });
-  let letterBoxes = document.querySelectorAll(".letter");
+  var letterBoxes = document.querySelectorAll(".letter");
 
   letterBoxes[0].focus();
   // console.log("pre:", word, words, score);
   // checkLetters(word, words, score);
-  let score = Array(letterBoxes.length).fill(false);
+  var score = Array(letterBoxes.length).fill(false);
   return score;
 }
 
 // Add Score
-let totalScore = 0;
-let scoreDiv = document.querySelector("#total-score");
-let newPoints = document.querySelector("#new-points");
-let scoreContainer = document.querySelector("#score-container");
+var totalScore = 0;
+var scoreDiv = document.querySelector("#total-score");
+var newPoints = document.querySelector("#new-points");
+var scoreContainer = document.querySelector("#score-container");
 
 //////// START GAME ////////////////////
 // Show new word on start button click
@@ -235,14 +235,14 @@ function gameStart(words, category) {
 
   scoreDiv.innerHTML = totalScore;
 
-  let passButton = document.querySelector("#pass-button");
+  var passButton = document.querySelector("#pass-button");
   passButton.style.display = "block";
 
   // Set new word on pass
   // ??????????
   passButton.onclick = () => {
     if (words.length === 0) {
-      // let passButton = document.querySelector("#pass-button");
+      // var passButton = document.querySelector("#pass-button");
       gameScreen.style.display = "none";
       categoriesContainer.style.display = "flex";
       // score = undefined;
@@ -250,10 +250,10 @@ function gameStart(words, category) {
       // console.log("passButton && words.length = 0) - words:", words);
       // console.log("passButton && words.length = 0) - score:", score);
     } else {
-      let word = words.pop();
+      var word = words.pop();
       // console.log("showNewWord called - B");
       showNewWord(word, category);
-      // let score = Array(letterBoxes.length).fill(false);
+      // var score = Array(letterBoxes.length).fill(false);
       // console.log(score);
       checkLetters(word, words, score, category);
     }
@@ -262,8 +262,8 @@ function gameStart(words, category) {
 
   /////
 
-  let word = words.pop();
-  let score = Array(word.length).fill(false);
+  var word = words.pop();
+  var score = Array(word.length).fill(false);
 
   // console.log("gameStart:", score);
   showNewWord(word, category);
@@ -275,7 +275,7 @@ function gameStart(words, category) {
 
 ////////////////////////////////////////
 
-let lettersContainer = document.querySelector("#lettersContainer");
+var lettersContainer = document.querySelector("#lettersContainer");
 lettersContainer.innerHTML = "";
 
 // Mark entered letters green or red
@@ -283,9 +283,9 @@ function markLetters(id, word, words, score, category) {
   // console.log("markLetters:", word);
   // console.log("markLetters:", score);
 
-  let letterBoxes = document.querySelectorAll(".letter");
+  var letterBoxes = document.querySelectorAll(".letter");
   // If the entered letter is correct
-  let inputLetter = letterBoxes[id].value;
+  var inputLetter = letterBoxes[id].value;
 
   if (inputLetter === word.toLowerCase()[id]) {
     // Mark letter score as correct
@@ -308,8 +308,8 @@ function checkLetters(word, words, score, category) {
   // console.log("checkLetters - score:", score);
 
   // Add event listeners to each letterBox
-  let letterBoxes = document.querySelectorAll(".letter");
-  for (let i = 0; i < word.length; i++) {
+  var letterBoxes = document.querySelectorAll(".letter");
+  for (var i = 0; i < word.length; i++) {
     //Select whole text when clicked
     letterBoxes[i].addEventListener("click", function () {
       letterBoxes[i].onclick = this.select();
@@ -330,19 +330,19 @@ function checkLetters(word, words, score, category) {
         // If wrong letter is entered, mark red and move to next unanswered or incorrect letter
         // Applied after marking green or red and cursor remains in same input before moving the focus
         function setFocus() {
-          let indexOfIncorrectLetters = [];
+          var indexOfIncorrectLetters = [];
           // Get the index of all letters that are not correct
           function getIndexOfIncorrectLetters() {
-            // let letterBoxes = document.querySelectorAll(".letter");
+            // var letterBoxes = document.querySelectorAll(".letter");
             // console.log(
             //   "getIndexOfIncorrectLetters - letterBoxes:",
             //   letterBoxes
             // );
             // console.log("getIndexOfIncorrectLetters: - word:", word);
             // Collect the classes of each letterBoxes
-            let classArray = [];
-            for (let j = 0; j < word.length; j++) {
-              let classValue = letterBoxes[j].classList.value;
+            var classArray = [];
+            for (var j = 0; j < word.length; j++) {
+              var classValue = letterBoxes[j].classList.value;
               classArray.push(classValue);
             }
             // Get index of incorrect letters
@@ -351,7 +351,7 @@ function checkLetters(word, words, score, category) {
                 indexOfIncorrectLetters.push(index);
               }
             });
-            let levelSelector = document.querySelector("#level-selector");
+            var levelSelector = document.querySelector("#level-selector");
             // console.log(word);
             if (indexOfIncorrectLetters.length < word.length) {
               levelSelector.disabled = true;
@@ -370,7 +370,7 @@ function checkLetters(word, words, score, category) {
           }
         }
 
-        let levelSelector = document.querySelector("#level-selector");
+        var levelSelector = document.querySelector("#level-selector");
         setFocus(levelSelector);
       }
       // console.log("keyup:end - word:", word);
