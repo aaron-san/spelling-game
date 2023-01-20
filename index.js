@@ -1,12 +1,19 @@
 let title = document.querySelector("#title");
 title.addEventListener("click", () => {
-  let gameScreen = document.querySelector("#game-screen");
-  gameScreen.style.display = "none";
+  let wordContainer = document.querySelector("#word-container");
+  wordContainer.style.display = "none";
   let categoriesContainer = document.querySelector(".categories-container");
   categoriesContainer.style.display = "flex";
 });
 
 let categoriesContainer = document.querySelector(".categories-container");
+
+let scoreContainer = document.querySelector("#score-container");
+scoreContainer.style.display = "block";
+scoreContainer.style.top = "100px";
+
+let newPoints = document.querySelector("#new-points");
+newPoints.style.display = "none";
 
 let data = {
   foods: [
@@ -145,7 +152,7 @@ categories.forEach((el) => {
 // let foodCategory = document.querySelector(".food");
 // let fruitCategory = document.querySelector(".fruits");
 
-let gameScreen = document.querySelector("#game-screen");
+let wordContainer = document.querySelector("#word-container");
 
 for (i = 0; i < categoriesArray.length; i++) {
   let categoryElement = document.querySelector("." + categoriesArray[i]);
@@ -155,7 +162,7 @@ for (i = 0; i < categoriesArray.length; i++) {
   // console.log(itemsArray);
   // console.log(category.classList[1]);
   categoryElement.addEventListener("click", () => {
-    gameScreen.style.display = "flex";
+    wordContainer.style.display = "flex";
     categoriesContainer.style.display = "none";
 
     let words = data[category];
@@ -228,9 +235,15 @@ function checkScore(words, score, category) {
     // console.log("-----------");
     if (words.length === 0) {
       // location.reload();
-      gameScreen.style.display = "none";
+      wordContainer.style.display = "none";
       categoriesContainer.style.display = "flex";
       levelSelector.disable = false;
+      let scoreContainer = document.querySelector("#score-container");
+      scoreContainer.style.display = "block";
+      scoreContainer.style.top = "100px";
+
+      let newPoints = document.querySelector("#new-points");
+      newPoints.style.display = "none";
       // go to homepage and darken complete category
       let categoryNode = document.querySelector("." + category);
       categoryNode.classList.add("complete-category");
@@ -306,8 +319,8 @@ function showNewWord(word, category) {
 // Add Score
 let totalScore = 0;
 let scoreDiv = document.querySelector("#total-score");
-let newPoints = document.querySelector("#new-points");
-let scoreContainer = document.querySelector("#score-container");
+// let newPoints = document.querySelector("#new-points");
+// let scoreContainer = document.querySelector("#score-container");
 
 //////// START GAME ////////////////////
 // Show new word on start button click
@@ -316,6 +329,8 @@ let scoreContainer = document.querySelector("#score-container");
 function gameStart(words, category) {
   // console.log("gameStart - words:", words);
   // startButton.style.display = "none";
+  let newPoints = document.querySelector("#new-points");
+  newPoints.style.display = "block";
   newPoints.innerHTML = "+3";
   scoreContainer.style.display = "block";
 
@@ -327,8 +342,14 @@ function gameStart(words, category) {
   // Set new word on pass
   passButton.onclick = () => {
     if (words.length === 0) {
-      gameScreen.style.display = "none";
+      wordContainer.style.display = "none";
       categoriesContainer.style.display = "flex";
+      let scoreContainer = document.querySelector("#score-container");
+      scoreContainer.style.display = "block";
+      scoreContainer.style.top = "100px";
+
+      let newPoints = document.querySelector("#new-points");
+      newPoints.style.display = "none";
     } else {
       let word = words.pop();
       showNewWord(word, category);
