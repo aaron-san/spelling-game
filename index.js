@@ -9,7 +9,6 @@ title.addEventListener("click", () => {
 let categoriesContainer = document.querySelector(".categories-container");
 
 let data = {
-  feelings: ["happy", "sad"],
   foods: [
     "bread",
     "curryandrice",
@@ -29,8 +28,36 @@ let data = {
     "spaghetti",
     "steak",
   ],
-  fruits: ["melon"],
-  sports: ["baseball", "badminton"],
+  fruits: [
+    "apple",
+    "banana",
+    "cherry",
+    "grapes",
+    "kiwifruit",
+    "lemon",
+    "melon",
+    "orange",
+    "peach",
+    "pineapple",
+    "strawberry",
+    "tomato",
+    "watermelon",
+  ],
+  sports: [
+    "badminton",
+    "baseball",
+    "basketball",
+    "dodgeball",
+    "skating",
+    "skiing",
+    "soccer",
+    "softball",
+    "swimming",
+    "tabletennis",
+    "tennis",
+    "trackandfield",
+    "volleyball",
+  ],
   animals: [
     "bear",
     "cow",
@@ -44,6 +71,63 @@ let data = {
     "tiger",
     "panda",
     "monkey",
+  ],
+  weather: ["cloudy", "rainy", "snowy", "sunny"],
+  feelings: [
+    "busy",
+    "cold",
+    "fine",
+    "good",
+    "great",
+    "happy",
+    "hot",
+    "hungry",
+    "sad",
+    "sleepy",
+    "thirsty",
+    "tired",
+  ],
+  schoolevents: [
+    "choruscontest",
+    "dramafestival",
+    "entranceceremony",
+    "fieldtrip",
+    "firedrill",
+    "graduationceremony",
+    "musicfestival",
+    "schoolfestival",
+    "schooltrip",
+    "sportsday",
+    "summervacation",
+    "swimmingmeet",
+    "volunteerday",
+  ],
+  actions1: [
+    "bake",
+    "buy",
+    "drink",
+    "cook",
+    "clean",
+    "dance",
+    "draw",
+    "eat",
+    "go",
+    "jump",
+    "listen",
+    "read",
+    "ride",
+    "run",
+    "sing",
+    "skate",
+    "speak",
+    "stop",
+    "study",
+    "swim",
+    "talk",
+    "teach",
+    "travel",
+    "turn",
+    "write",
   ],
 };
 
@@ -121,7 +205,7 @@ function addLevelSelector() {
 
 // Check if entered word is correct and generate new word
 function checkScore(words, score, category) {
-  // console.log("checkScore:", word);
+  // console.log("checkScore:", words);
   // console.log("checkScore:", score);
   scoreDiv.classList.remove("show-new-score");
   let levelSelector = document.querySelector("#level-selector");
@@ -148,6 +232,8 @@ function checkScore(words, score, category) {
       categoriesContainer.style.display = "flex";
       levelSelector.disable = false;
       // go to homepage and darken complete category
+      let categoryNode = document.querySelector("." + category);
+      categoryNode.classList.add("complete-category");
     }
 
     if (words.length > 0) {
@@ -241,33 +327,22 @@ function gameStart(words, category) {
   // Set new word on pass
   passButton.onclick = () => {
     if (words.length === 0) {
-      // let passButton = document.querySelector("#pass-button");
       gameScreen.style.display = "none";
       categoriesContainer.style.display = "flex";
-      // score = undefined;
-      // console.log("passButton && words.length = 0) - word:", word);
-      // console.log("passButton && words.length = 0) - words:", words);
-      // console.log("passButton && words.length = 0) - score:", score);
     } else {
       let word = words.pop();
-      // console.log("showNewWord called - B");
       showNewWord(word, category);
-      // let score = Array(letterBoxes.length).fill(false);
-      // console.log(score);
+      let letterBoxes = document.querySelectorAll(".letter");
+      let score = Array(letterBoxes.length).fill(false);
       checkLetters(word, words, score, category);
     }
   };
-  // ?????????
-
-  /////
 
   let word = words.pop();
   let score = Array(word.length).fill(false);
 
-  // console.log("gameStart:", score);
   showNewWord(word, category);
 
-  /////
   checkLetters(word, words, score, category);
 }
 // }
