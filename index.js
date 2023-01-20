@@ -173,7 +173,6 @@ for (i = 0; i < categoriesArray.length; i++) {
     words = words.map((word) => word.toLowerCase());
     words = words.sort((a, b) => 0.5 - Math.random());
 
-    addLevelSelector();
     gameStart(words, category);
   });
 }
@@ -186,25 +185,37 @@ for (i = 0; i < categoriesArray.length; i++) {
 //   return word;
 // }
 
-function addLevelSelector() {
+function addLevelSelector(word) {
   let levelSelector = document.querySelector("select#level-selector");
   levelSelector.style.backgroundColor = "lightgreen";
-  let cover = document.querySelector("#cover");
+  // let cover = document.querySelector("#cover");
   // console.log(levelSelector.value);
   levelSelector.addEventListener("change", () => {
-    let letterBoxes = document.querySelectorAll(".letter");
-    // console.log(letterBoxes.length);
-    if (letterBoxes.length > 0) {
-      letterBoxes[0].focus();
+    let letterInput = document.querySelectorAll(".letterInput");
+    // let letterTextNode = document.querySelectorAll(".letterText");
+    // console.log(letterInput.length);
+    if (letterInput.length > 0) {
+      letterInput[0].focus();
       if (levelSelector.value === "EASY") {
-        cover.style.display = "none";
+        let letterTextNode = document.querySelectorAll(".letterText");
+        for (let i = 0; i < letterInput.length; i++) {
+          letterTextNode[i].style.display = "block";
+        }
+        // cover.style.display = "none";
         levelSelector.style.backgroundColor = "lightcyan";
         newPoints.innerHTML = "+3";
       }
       if (levelSelector.value === "DIFFICULT") {
-        cover.style.display = "block";
+        // cover.style.display = "block";
+
+        // letterText.style.display = "none";
+        let letterTextNode = document.querySelectorAll(".letterText");
+        for (let i = 0; i < letterTextNode.length; i++) {
+          letterTextNode[i].style.display = "none";
+        }
+
         levelSelector.style.backgroundColor = "lightpink";
-        newPoints.innerHTML = "+5";
+        newPoints.innerHTML = "+6";
       }
     }
   });
@@ -226,9 +237,13 @@ function checkScore(words, score, category) {
       newPoints.innerHTML = "+3";
     }
     if (levelSelector.value === "DIFFICULT") {
-      totalScore += 5;
+      totalScore += 6;
       scoreDiv.innerHTML = totalScore;
-      newPoints.innerHTML = "+5";
+      newPoints.innerHTML = "+6";
+      let letterTextNode = document.querySelectorAll(".letterText");
+      for (let i = 0; i < letterTextNode.length; i++) {
+        letterTextNode[i].style.display = "none";
+      }
     }
     // console.log("-----------");
     // console.log(words.length);
@@ -254,7 +269,7 @@ function checkScore(words, score, category) {
       let word = words.pop();
 
       // console.log("new word:", word);
-      // let letterBoxes = document.querySelectorAll(".letter");
+      // let letterInput = document.querySelectorAll(".letter");
       let score = Array(word.length).fill(false);
 
       // console.log("showNewWord called - A");
@@ -300,19 +315,43 @@ function showNewWord(word, category) {
 
   // Create input boxes for each letter of the word
 
-  word.split("").forEach(() => {
-    let input = document.createElement("input");
-    input.className = "letter";
-    input.type = "text";
-    input.maxLength = 1;
-    lettersContainer.appendChild(input);
-  });
-  let letterBoxes = document.querySelectorAll(".letter");
+  word.split("").forEach((letter) => {
+    //Container
+    let letterContainer = document.createElement("div");
+    letterContainer.classList.add("letterContainer");
+    //Printed letter
+    let letterText = document.createElement("div");
+    letterText.classList.add("letterText");
 
-  letterBoxes[0].focus();
+    //Input letter
+    let letterInput = document.createElement("input");
+    letterInput.classList.add("letterInput");
+    letterInput.type = "text";
+    letterInput.maxLength = 1;
+
+    letterContainer.appendChild(letterText);
+    letterContainer.appendChild(letterInput);
+    lettersContainer.appendChild(letterContainer);
+  });
+
+  let letterText = document.querySelectorAll(".letterText");
+  if (levelSelector.value === "EASY") {
+    for (let i = 0; i < word.length; i++) {
+      letterText[i].innerHTML = word[i];
+    }
+  }
+  // else {
+  //   for (let i = 0; i < word.length; i++) {
+  //     letterText[i].style.display = "none";
+  //   }
+  // }
+
+  let letterInput = document.querySelectorAll(".letterInput");
+
+  letterInput[0].focus();
   // console.log("pre:", word, words, score);
   // checkLetters(word, words, score);
-  let score = Array(letterBoxes.length).fill(false);
+  let score = Array(letterInput.length).fill(false);
   return score;
 }
 
@@ -353,8 +392,8 @@ function gameStart(words, category) {
     } else {
       let word = words.pop();
       showNewWord(word, category);
-      let letterBoxes = document.querySelectorAll(".letter");
-      let score = Array(letterBoxes.length).fill(false);
+      // let letterInput = document.querySelectorAll(".letterInput");
+      let score = Array(word.length).fill(false);
       checkLetters(word, words, score, category);
     }
   };
@@ -362,6 +401,7 @@ function gameStart(words, category) {
   let word = words.pop();
   let score = Array(word.length).fill(false);
 
+  addLevelSelector(word);
   showNewWord(word, category);
 
   checkLetters(word, words, score, category);
@@ -379,22 +419,22 @@ function markLetters(id, word, words, score, category) {
   // console.log("markLetters - words:", words);
   // console.log("markLetters - score:", score);
 
-  let letterBoxes = document.querySelectorAll(".letter");
+  let letterInput = document.querySelectorAll(".letterInput");
   // If the entered letter is correct
-  let inputLetter = letterBoxes[id].value;
+  let inputValue = letterInput[id].value;
 
-  if (inputLetter === word.toLowerCase()[id]) {
+  if (inputValue === word.toLowerCase()[id]) {
     // Mark letter score as correct
     // console.log(score, id);
     score[id] = true;
     // console.log(score);
     checkScore(words, score, category);
-    letterBoxes[id].classList.add("correct-letter");
-    letterBoxes[id].classList.remove("wrong-letter");
-    letterBoxes[id].readOnly = "true";
-    letterBoxes[id].style.outline = "none";
+    letterInput[id].classList.add("correct-letter");
+    letterInput[id].classList.remove("wrong-letter");
+    letterInput[id].readOnly = "true";
+    letterInput[id].style.outline = "none";
   } else {
-    letterBoxes[id].classList.add("wrong-letter");
+    letterInput[id].classList.add("wrong-letter");
   }
 }
 
@@ -403,19 +443,19 @@ function checkLetters(word, words, score, category) {
   // console.log("checkLetters - words:", words);
   // console.log("checkLetters - score:", score);
 
-  // Add event listeners to each letterBox
-  let letterBoxes = document.querySelectorAll(".letter");
+  // Add event listeners to each letterInput
+  let letterInput = document.querySelectorAll(".letterInput");
   for (let i = 0; i < word.length; i++) {
     //Select whole text when clicked
-    // console.log(letterBoxes[i]);
-    letterBoxes[i].addEventListener("click", function () {
-      letterBoxes[i].select();
+    // console.log(letterInput[i]);
+    letterInput[i].addEventListener("click", function () {
+      letterInput[i].select();
     });
 
     scoreDiv.style.opacity = "1";
     // Mark if entered text is correct
-    letterBoxes[i].addEventListener("keyup", function (event) {
-      if (event.key >= "a" && event.key <= "z") {
+    letterInput[i].addEventListener("keyup", function (event) {
+      if (event.key >= "A" && event.key <= "z") {
         // console.log("keyup:start - word:", word);
         // console.log("keyup:start - words:", words);
         // console.log("keyup:start - score:", score);
@@ -431,16 +471,16 @@ function checkLetters(word, words, score, category) {
           let indexOfIncorrectLetters = [];
           // Get the index of all letters that are not correct
           function getIndexOfIncorrectLetters() {
-            // let letterBoxes = document.querySelectorAll(".letter");
+            // let letterInput = document.querySelectorAll(".letter");
             // console.log(
-            //   "getIndexOfIncorrectLetters - letterBoxes:",
-            //   letterBoxes
+            //   "getIndexOfIncorrectLetters - letterInput:",
+            //   letterInput
             // );
             // console.log("getIndexOfIncorrectLetters: - word:", word);
-            // Collect the classes of each letterBoxes
+            // Collect the classes of each letterInput
             let classArray = [];
             for (let j = 0; j < word.length; j++) {
-              let classValue = letterBoxes[j].classList.value;
+              let classValue = letterInput[j].classList.value;
               classArray.push(classValue);
             }
             // Get index of incorrect letters
@@ -462,7 +502,7 @@ function checkLetters(word, words, score, category) {
 
           // If some letters are not correct
           if (indexOfIncorrectLetters.length >= 1) {
-            letterBoxes[indexOfIncorrectLetters[0]].select();
+            letterInput[indexOfIncorrectLetters[0]].select();
           } else {
             levelSelector.disabled = false;
           }
