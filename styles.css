@@ -106,7 +106,7 @@ select#level-selector {
 }
 
 .letter {
-    width: 40px;
+    width: 50px;
     border: 2px solid blue;
     border-radius: 5px;
     padding: 5px 10px;
