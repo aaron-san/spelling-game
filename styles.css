@@ -273,10 +273,11 @@ select#level-selector {
     background-color: rgb(255, 255, 167);
     padding: 5px 10px;
     /* margin: 4px; */
-    font-size: 30px;
+    font-size: 35px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: 0 0 6px lightgray;
     border-radius: 5px;
+    /* height: 50px; */
     
 }
 .category:active {
