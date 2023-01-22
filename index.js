@@ -199,7 +199,7 @@ function addLevelSelector(word) {
       if (levelSelector.value === "EASY") {
         let letterTextNode = document.querySelectorAll(".letterText");
         for (let i = 0; i < letterInput.length; i++) {
-          letterTextNode[i].style.display = "block";
+          letterTextNode[i].styel;
         }
         // cover.style.display = "none";
         levelSelector.style.backgroundColor = "lightcyan";
@@ -327,6 +327,7 @@ function showNewWord(word, category) {
     let letterInput = document.createElement("input");
     letterInput.classList.add("letterInput");
     letterInput.type = "text";
+    letterInput.autocapitalize = "false";
     letterInput.maxLength = 1;
 
     letterContainer.appendChild(letterText);
