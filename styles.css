@@ -293,8 +293,8 @@ select#level-selector {
 
 .category {
     cursor: pointer;
-    color: dodgerblue;
-    background-color: rgb(255, 255, 167);
+    color: #fff;
+    background-color: rgb(34, 195, 125);
     padding: 5px 10px;
     /* margin: 4px; */
     font-size: 35px;
@@ -313,4 +313,99 @@ select#level-selector {
     color: rgb(89, 83, 83)
 }
 
+
+@media (max-width: 678px){
+    #title {
+        cursor: pointer;
+        font-size: 30px;
+        font-weight: bold;
+        /* line-height: 3rem; */
+        font-family: 'Orbitron', sans-serif;
+        color: darkslategray;
+        padding: 5px 0 5px 10px;
+        margin: 0;
+    }
+
+    select#level-selector {
+        padding: 3px;
+        margin-right: 10px;
+        height: 40px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    .container {
+        margin: 5px 5px 5px 0px;
+    }
+
+    .categories-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin: 5px;
+    }
+
+
+    #word-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .letterInput {
+        width: 20px;
+        border: 1px solid blue;
+        border-radius: 5px;
+        padding: 5px 5px;
+        margin-top: 5px;
+        background-color: whitesmoke;
+        font-size: 20px;
+        font-family: 'Poppins', sans-serif;
+        box-shadow: 3px 3px 12px 1px gray;
+        text-align: center;
+    }   
+
+    #score-container {
+        /* display: none; */
+        /* position: block; */
+        /* right: 10px; */
+        width: 60px;
+        text-align: center;
+        margin: 1rem;
+        padding: 5px;
+    }
+    
+    
+    #total-score {
+        color: none;     
+        font-size: 3.6rem;    
+    }
+
+
+}
+
+
+.success {
+    animation: rotateText 2s ease-out forwards;
+}
+
+@keyframes rotateText {
+    0% {
+        opacity: 0;
+        /* transform: rotate(0); */
+    }
+
+    50% {
+        opacity: 50%;
+        /* transform: rotate(180deg); */
+    }
+
+    100% {
+        opacity: 100%;
+        /* transform: rotate(360deg); */
+    }
+}
 

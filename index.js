@@ -327,7 +327,8 @@ function showNewWord(word, category) {
     let letterInput = document.createElement("input");
     letterInput.classList.add("letterInput");
     letterInput.type = "text";
-    letterInput.autocapitalize = "false";
+    letterInput.autocapitalize = "none";
+    letterInput.classList.add("success");
     letterInput.maxLength = 1;
 
     letterContainer.appendChild(letterText);
