@@ -356,10 +356,11 @@ select#level-selector {
 
 
     .letterInput {
-        width: 20px;
+        width: 50px;
+        height: 50px;
         border: 1px solid blue;
         border-radius: 5px;
-        padding: 5px 5px;
+        padding: 5px;
         margin-top: 5px;
         background-color: whitesmoke;
         font-size: 20px;
@@ -384,12 +385,23 @@ select#level-selector {
         font-size: 3.6rem;    
     }
 
+    .letterText {
+        width: 50px;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: whitesmoke;
+        font-size: 50px;
+        font-family: 'Poppins', sans-serif;
+        /* box-shadow: 3px 3px 12px 1px gray; */
+        text-align: center;
+    
+    }
 
 }
 
 
 .success {
-    animation: rotateText 2s ease-out forwards;
+    animation: rotateText 1.5s ease-out forwards;
 }
 
 @keyframes rotateText {

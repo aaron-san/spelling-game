@@ -303,6 +303,7 @@ function showNewWord(word, category) {
   levelSelector.disabled = false;
 
   let imgDiv = document.querySelector("#image");
+  imgDiv.classList.add("success");
   imgDiv.style.display = "block";
   let img = document.querySelector("#image img");
 
