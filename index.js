@@ -139,7 +139,9 @@ let data = {
 };
 
 // Get the categories from the DOM elements
-let categories = Array.from(categoriesContainer.children);
+let categories = document.querySelectorAll(".category");
+// let categories = Array.from(categoriesContainer.children);
+// console.log(categories);
 
 let categoriesArray = [];
 categories.forEach((el) => {
@@ -426,11 +428,13 @@ function markLetters(id, word, words, score, category) {
   // If the entered letter is correct
   let inputValue = letterInput[id].value;
 
-  if (inputValue === word.toLowerCase()[id]) {
+  if (inputValue.toUpperCase() === word.toLowerCase()[id].toUpperCase()) {
     // Mark letter score as correct
     // console.log(score, id);
+    letterInput[id].value = word[id];
     score[id] = true;
     // console.log(score);
+
     checkScore(words, score, category);
     letterInput[id].classList.add("correct-letter");
     letterInput[id].classList.remove("wrong-letter");
