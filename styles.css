@@ -27,6 +27,22 @@ body {
     align-items: center;
 }
 
+.categories-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 5px;
+}
+
+.fifth-grade,
+.sixth-grade{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        /* gap: 7px; */
+        margin: 5px;
+    }
 #word-container {
     display: flex;
     flex-direction: column;
@@ -45,7 +61,6 @@ header {
     box-shadow: 0 0 6px gray;
     
 }
-
 
 
 #title {
@@ -207,7 +222,7 @@ select#level-selector {
     display: none;
     position: absolute;
     right: 10px;
-    width: 60px;
+    width: 80px;
     /* height: 70px; */
     text-align: center;
     margin: 1.2rem;
@@ -221,17 +236,17 @@ select#level-selector {
 
 #total-score {
     color: none;
-    /* color:lightseagreen; */
-    /* -webkit-text-fill-color: white;
-    -webkit-text-stroke-color: black;
-    -webkit-text-stroke-width: 1px; */
-    font-size: 3.6rem;    
+    position: absolute;
+    top: 45px;
+    left: 45px;
+    font-size: 2.6rem;    
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    
-    /* opacity: 0; */
-    /* transition: color 1s; */
     animation: color-appear 1s forwards;
-    /* transition: opacity 2s; */
+}
+
+.stamp {
+    width: 70px;
+    height: 70px;
 }
 
 @keyframes color-appear {
@@ -245,7 +260,7 @@ select#level-selector {
     }
 
     100% {
-        color: lightseagreen;
+        color: lightgoldenrodyellow;
         text-shadow: 1.1px 1.1px 1.1px #000;
         transform: translateY(0px)
     }
@@ -283,7 +298,7 @@ select#level-selector {
     cursor: pointer;
     color: #fff;
     padding: 5px 10px;
-    /* margin: 4px; */
+    margin: 4px;
     font-size: 35px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: 0 0 6px lightgray;
@@ -297,7 +312,7 @@ select#level-selector {
 
 .fifth-grade .category{
     display: block;
-    background-color: crimson;
+    background-color: rgb(20, 163, 220);
 }
 .sixth-grade .category {
     background-color: rgb(34, 195, 125);
@@ -309,9 +324,9 @@ select#level-selector {
     transform: scale(105%);
 }
 
-.complete-category {
-    background: rgb(192, 192, 165);
-    color: rgb(89, 83, 83)
+#complete-category {
+    background-color: rgb(107, 107, 96);
+    color: whitesmoke;
 }
 
 
@@ -372,20 +387,25 @@ select#level-selector {
     }   
 
     #score-container {
-        /* display: none; */
-        /* position: block; */
-        /* right: 10px; */
-        width: 60px;
         text-align: center;
         margin: 1rem;
-        padding: 5px;
+        padding: 10px 5px;
     }
     
     
     #total-score {
+            color: none;
+            position: absolute;
+            top: 35px;
+            left: 30px;
+            font-size: 2.6rem;    
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            animation: color-appear 1s forwards;
+        
         color: none;     
         font-size: 3.6rem;    
     }
+
 
     .letterText {
         width: 50px;
