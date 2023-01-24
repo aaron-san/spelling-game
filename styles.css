@@ -43,7 +43,7 @@ body {
         /* gap: 7px; */
         margin: 5px;
     }
-#word-container {
+#main-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -106,49 +106,56 @@ select#level-selector {
     /* z-index: -1; */
 }
 
-
-#lettersContainer {
+.word-container {
     display: flex;
+    /* flex-direction: column; */
+    padding: 10px;
+    margin: 10px;
+    /* width: 400px; */
+    /* height: 400px; */
     flex-wrap: wrap;
     width: 80vw;
     height: auto;
-    padding: 5px;
-    margin: 5px;
+    padding: 1px;
+    margin: 1px;
     justify-content: center;
-    gap: 10px;
-    /* justify-content: center; */
-    /* justify-content: center; */
-    /* background-color: coral; */
-    display: flex;
+    gap: 2px;
 }
 
 
-.letterContainer {
+.letter-container {
     display: flex;
+    margin: 0px;
+    padding: 0px;
     flex-direction: column;
 }
 
-.letterText {
+.letter-text {
     width: 50px;
     /* border: 2px solid blue; */
     border-radius: 5px;
-    padding: 5px 10px;
-    background-color: whitesmoke;
+    padding: 10px 10px 3px 10px;
+    margin: 2px;
+    
+    /* border: 1px solid lightsteelblue; */
+    /* background: radial-gradient(rgb(255, 255, 234) 10%, transparent); */
+    
+    color: darkslategray;
     font-size: 50px;
     font-family: 'Poppins', sans-serif;
     /* box-shadow: 3px 3px 12px 1px gray; */
     text-align: center;
-
 }
 
 
-.letterInput {
+.letter-input {
     width: 50px;
-    border: 1px solid blue;
+    border: 1px solid lightsteelblue;
     /* border: transparent; */
     border-radius: 5px;
-    padding: 5px 10px;
-    margin-top: 5px;
+    padding: 10px;
+    /* margin-top: 5px; */
+    margin: 2px;
     background-color: whitesmoke;
     font-size: 50px;
     font-family: 'Poppins', sans-serif;
@@ -224,13 +231,14 @@ select#level-selector {
     right: 10px;
     width: 80px;
     /* height: 70px; */
+    color: darkslategray;
     text-align: center;
     margin: 1.2rem;
     padding: 14px 16px;
     background-color: lightgoldenrodyellow;
     /* border: 2px dashed darkslategray; */
     box-shadow: 0 0 8px darkslategray;
-    border-radius: 35px;
+    border-radius: 20px;
 }
 
 
@@ -364,60 +372,68 @@ select#level-selector {
     }
 
 
-    #word-container {
+    #main-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-
-    .letterInput {
+    #score-container {
+        padding: 10px 5px;
+        right: 5px;
+        width: 60px;
+        color: darkslategray;
+        margin: 0.8rem;
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+    
+    .stamp {
         width: 50px;
         height: 50px;
-        border: 1px solid blue;
-        border-radius: 5px;
-        padding: 5px;
-        margin-top: 5px;
-        background-color: whitesmoke;
-        font-size: 50px;
-        font-family: 'Poppins', sans-serif;
-        box-shadow: 3px 3px 12px 1px gray;
-        text-align: center;
-    }   
-
-    #score-container {
-        text-align: center;
-        margin: 1rem;
-        padding: 10px 5px;
     }
-    
+
     
     #total-score {
-            color: none;
-            position: absolute;
-            top: 35px;
-            left: 30px;
-            font-size: 2.6rem;    
-            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            animation: color-appear 1s forwards;
-        
-        color: none;     
-        font-size: 3.6rem;    
+        color: none;
+        position: absolute;
+        top: 35px;
+        left: 30px;
+        font-size: 2rem;    
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        animation: color-appear 1s forwards;        
+    }
+
+    #pass-button {
+        position: absolute;
+        display: none;
+        cursor: pointer;
+        right: 22px;
+        top: 220px;
+        background-color: lightcoral;
+        color: whitesmoke;
+        margin-top: 10px;
+        padding: 8px;
+        font-size: 20px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 0 gray;
     }
 
 
-    .letterText {
-        width: 50px;
-        border-radius: 5px;
+    .letter-text {
+        width: 30px;
         padding: 5px;
-        background-color: whitesmoke;
-        font-size: 50px;
-        font-family: 'Poppins', sans-serif;
-        /* box-shadow: 3px 3px 12px 1px gray; */
-        text-align: center;
-    
+        font-size: 30px;
     }
+
+    .letter-input {
+        width: 30px;
+        height: 50px;
+        padding: 5px;
+        font-size: 30px;
+    }   
 
     .correct-letter {
         background-color: aquamarine;
