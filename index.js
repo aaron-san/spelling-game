@@ -10,7 +10,7 @@ let categoriesContainer = document.querySelector(".categories-container");
 
 let scoreContainer = document.querySelector("#score-container");
 scoreContainer.style.display = "block";
-scoreContainer.style.top = "100px";
+// scoreContainer.style.top = "100px";
 
 // let newPoints = document.querySelector("#new-points");
 // newPoints.style.display = "none";
@@ -259,7 +259,7 @@ function checkScore(words, score, category) {
       levelSelector.disable = false;
       let scoreContainer = document.querySelector("#score-container");
       scoreContainer.style.display = "block";
-      scoreContainer.style.top = "100px";
+      // scoreContainer.style.top = "100px";
 
       // let newPoints = document.querySelector("#new-points");
       // newPoints.style.display = "none";
@@ -310,7 +310,7 @@ function showNewWord(word, category) {
 
   let imgDiv = document.querySelector("#image");
   imgDiv.classList.add("success");
-  imgDiv.style.display = "block";
+  imgDiv.style.display = "flex";
   let img = document.querySelector("#image img");
 
   img.src = "./assets/images/" + category + "/" + word + ".png";
@@ -415,7 +415,7 @@ function gameStart(words, category) {
       categoriesContainer.style.display = "flex";
       let scoreContainer = document.querySelector("#score-container");
       scoreContainer.style.display = "block";
-      scoreContainer.style.top = "100px";
+      // scoreContainer.style.top = "100px";
 
       // let newPoints = document.querySelector("#new-points");
       // newPoints.style.display = "none";
