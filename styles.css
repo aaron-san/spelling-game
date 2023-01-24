@@ -407,20 +407,14 @@ select#level-selector {
 
     #pass-button {
         position: absolute;
-        display: none;
-        cursor: pointer;
         right: 22px;
         top: 220px;
-        background-color: lightcoral;
-        color: whitesmoke;
-        margin-top: 10px;
-        padding: 8px;
         font-size: 20px;
-        border: none;
-        border-radius: 10px;
-        box-shadow: 3px 3px 3px 0 gray;
     }
 
+    #image {
+        width: 200px;
+    }
 
     .letter-text {
         width: 30px;
