@@ -194,29 +194,11 @@ function addLevelSelector(word, words, category) {
       container.remove();
     }
 
-    // word = words.pop();
-    // console.log("load image 2");
-    // showNewWord(word, words, category);
-    // let score = Array(word.replace(" ", "").length).fill(false);
-    // checkLetters(word, words, score, category);
-
-    // let letterInput = document.querySelectorAll(".letter-input");
-    // if (letterInput.length > 0) {
-    //   letterInput[0].focus();
     if (levelSelector.value === "EASY") {
-      //     let letterTextNode = document.querySelectorAll(".letter-text");
-      //     for (let i = 0; i < letterInput.length; i++) {}
       levelSelector.style.backgroundColor = "lightcyan";
-      //     // newPoints.innerHTML = "+3";
     }
     if (levelSelector.value === "DIFFICULT") {
-      //     let letterTextNode = document.querySelectorAll(".letter-text");
-      //     for (let i = 0; i < letterTextNode.length; i++) {
-      //       letterTextNode[i].style.display = "none";
-      //     }
-
       levelSelector.style.backgroundColor = "lightpink";
-      //     // newPoints.innerHTML = "+6";
     }
     // }
   });
@@ -230,7 +212,7 @@ function checkScore(words, score, category) {
   if (score.every((e) => e === true)) {
     // console.log(totalScore);
     if (levelSelector.value === "EASY") {
-      totalScore += 0.1;
+      totalScore += 3;
       scoreDiv.innerHTML = Math.floor(totalScore);
       // newPoints.innerHTML = "+3";
     }
@@ -301,7 +283,6 @@ function showNewWord(word, category) {
   imgDiv.style.display = "flex";
   let img = document.querySelector("#image img");
 
-  console.log("load image");
   img.src = "./assets/images/" + category + "/" + word + ".png";
 
   // Loop over each word
