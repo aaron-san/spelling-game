@@ -176,7 +176,12 @@ for (i = 0; i < categoriesArray.length; i++) {
 
 function addLevelSelector(word, words, category) {
   let levelSelector = document.querySelector("select#level-selector");
-  levelSelector.style.backgroundColor = "lightgreen";
+  let optionArray = document.querySelectorAll("option");
+
+  for (option of optionArray) {
+    option.style.backgroundColor = "#fff";
+  }
+
   // let cover = document.querySelector("#cover");
   // console.log(levelSelector.value);
   levelSelector.addEventListener("change", () => {
@@ -198,21 +203,21 @@ function addLevelSelector(word, words, category) {
     // let letterInput = document.querySelectorAll(".letter-input");
     // if (letterInput.length > 0) {
     //   letterInput[0].focus();
-    //   if (levelSelector.value === "EASY") {
-    //     let letterTextNode = document.querySelectorAll(".letter-text");
-    //     for (let i = 0; i < letterInput.length; i++) {}
-    //     levelSelector.style.backgroundColor = "lightcyan";
-    //     // newPoints.innerHTML = "+3";
-    //   }
-    //   if (levelSelector.value === "DIFFICULT") {
-    //     let letterTextNode = document.querySelectorAll(".letter-text");
-    //     for (let i = 0; i < letterTextNode.length; i++) {
-    //       letterTextNode[i].style.display = "none";
-    //     }
+    if (levelSelector.value === "EASY") {
+      //     let letterTextNode = document.querySelectorAll(".letter-text");
+      //     for (let i = 0; i < letterInput.length; i++) {}
+      levelSelector.style.backgroundColor = "lightcyan";
+      //     // newPoints.innerHTML = "+3";
+    }
+    if (levelSelector.value === "DIFFICULT") {
+      //     let letterTextNode = document.querySelectorAll(".letter-text");
+      //     for (let i = 0; i < letterTextNode.length; i++) {
+      //       letterTextNode[i].style.display = "none";
+      //     }
 
-    //     levelSelector.style.backgroundColor = "lightpink";
-    //     // newPoints.innerHTML = "+6";
-    //   }
+      levelSelector.style.backgroundColor = "lightpink";
+      //     // newPoints.innerHTML = "+6";
+    }
     // }
   });
 }

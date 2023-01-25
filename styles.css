@@ -83,7 +83,13 @@ select#level-selector {
     font-size: 1.4rem;
     border-radius: 5px;
     outline: none;
+    background-color: lightcyan;
 }
+
+/* option {
+    background-color: #fff;
+} */
+
 
 .image-stamps-pass-container {
     margin-top: 20px;
@@ -109,7 +115,7 @@ select#level-selector {
     text-align: center;
     /* align-items: center; */
     /* background-color: white; */
-    border: 2px solid darkslategray;
+    /* border: 2px solid darkslategray; */
     border-radius: 3px;
     box-shadow: var(--shadow);
 }
