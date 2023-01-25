@@ -1,6 +1,7 @@
 :root {
     --main-theme: whitesmoke;
     --main-color: darkslategray;
+    --shadow: 3px 3px 3px 0 gray;
 }
 body {
     color: darkslategray;
@@ -22,7 +23,7 @@ body {
     /* justify-content: center; */
     /* border: 1px solid blue; */
     /* background: orange; */
-    width: 100vw;
+    width: 90vw;
     height: auto;
     align-items: center;
 }
@@ -60,8 +61,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 0 6px gray;
-    
+    box-shadow: 0 0 6px gray;   
 }
 
 
@@ -97,8 +97,9 @@ select#level-selector {
     width: 33.33333%;
     /* background-color: aqua; */
     display: flex;
+    gap: 40px;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-end;
 }
 
@@ -107,9 +108,10 @@ select#level-selector {
     width: 33.33333%;
     text-align: center;
     /* align-items: center; */
-    background-color: white;
-    border: 1px solid darkslategray;
-    border-radius: 8px;
+    /* background-color: white; */
+    border: 2px solid darkslategray;
+    border-radius: 3px;
+    box-shadow: var(--shadow);
 }
 
 #image img {
@@ -164,7 +166,7 @@ select#level-selector {
     background-color: whitesmoke;
     font-size: 50px;
     font-family: 'Poppins', sans-serif;
-    box-shadow: 3px 3px 12px 1px gray;
+    box-shadow: var(--shadow);
     text-align: center;
 }
 
@@ -177,7 +179,7 @@ select#level-selector {
     border: none;
     border-radius: 10px;
     background-color: rgb(32, 178, 120);
-    box-shadow: 3px 3px 3px 0 gray;
+    box-shadow: var(--shadow);
 }
 
 #start-button:hover {
@@ -195,8 +197,8 @@ select#level-selector {
     background-color: lightcoral;
     color: whitesmoke;
     /* margin-top: 10px; */
-    margin-right: 5px;
-    padding: 8px 13px;
+    margin: 10px 10px 0 0;
+    padding: 8px 11px;
     font-size: 30px;
     border: none;
     border-radius: 8px;
@@ -233,11 +235,11 @@ select#level-selector {
 #score-container {
     display: none;
     position: relative;
-    width: 80px;
+    width: 85px;
     color: darkslategray;
     text-align: center;
     padding: 5px;
-    margin-right: 5px;
+    margin-right: 10px;
     background-color: lightgoldenrodyellow;
     border: 2px solid darkslategray;
     border-radius: 8px;
@@ -344,12 +346,8 @@ select#level-selector {
 
 @media (max-width: 678px){
     #title {
-        cursor: pointer;
         font-size: 25px;
         font-weight: bold;
-        /* line-height: 3rem; */
-        font-family: 'Orbitron', sans-serif;
-        color: darkslategray;
         padding: 5px 0 5px 10px;
         margin: 0;
     }
@@ -359,29 +357,23 @@ select#level-selector {
         margin-right: 10px;
         height: 40px;
         font-size: 1.2rem;
-        border-radius: 5px;
-        outline: none;
     }
-
 
     .categories-container .fifth-grade,
     .categories-container .sixth-grade{
-        display: flex;
-        flex-wrap: wrap;
         gap: 7px;
         margin: 5px;
     }
 
+.image-stamps-pass-container {
 
-    #main-container {
-        /* position: relative; */
-        /* margin: 0 5px; */
+}
 
-        /* display: flex; */
-        /* flex-direction: column; */
-        /* justify-content: center; */
-        /* align-items: center; */
-    }
+
+.stamps-pass-container {
+    width: 25%;
+}
+
 
     #score-container {
         width: 60px;
@@ -396,9 +388,7 @@ select#level-selector {
         height: 50px;
     }
 
-    
     #total-score {
-        color: none;
         position: absolute;
         top: 35px;
         left: 30px;
@@ -410,14 +400,21 @@ select#level-selector {
     #pass-button {
         top: 194px;
         font-size: 20px;
-        margin: 5px 5px 0 0;
+        margin: 5px 10px 0 0;
     }
 
     #image {
-        width: 200px;
+        width: 60%;
+        margin-right: 20px;
         /* align-self: start; */
     }
 
+
+    .word-container {
+        justify-content: flex-start;
+        margin: 3px 0;
+        padding: 0;
+    }
     .letter-text {
         width: 30px;
         padding: 5px;
