@@ -22,17 +22,18 @@ let scoreContainer = document.querySelector("#score-container");
 let data = {
   foods: [
     "bread",
-    "curryandrice",
-    "frenchfries",
+    "curry and rice",
+    "French fries",
     "hamburger",
-    "grilledfish",
+    "hot dog",
+    "grilled fish",
     "omelet",
     "pancakes",
     "pie",
     "pizza",
     "rice",
-    "riceball",
-    "friedchicken",
+    "rice ball",
+    "fried chicken",
     "salad",
     "sandwich",
     "sausage",
@@ -44,7 +45,7 @@ let data = {
     "banana",
     "cherry",
     "grapes",
-    "kiwifruit",
+    "kiwi fruit",
     "lemon",
     "melon",
     "orange",
@@ -140,6 +141,33 @@ let data = {
     "turn",
     "write",
   ],
+  seasons: ["fall", "spring", "summer", "winter"],
+  months: [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ],
+  annualevents: [
+    "April Fools Day",
+    "birthday",
+    "Childrens Day",
+    "Christmas",
+    "Dolls Festival",
+    "fireworks",
+    "Halloween",
+    "New Years Day",
+    "New Years Eve",
+    "Star Festival",
+  ],
 };
 
 // Get the categories from the DOM elements
@@ -165,7 +193,7 @@ for (i = 0; i < categoriesArray.length; i++) {
 
     // All words to lowercase
     // words = words.concat(words);
-    words = words.map((word) => word.toLowerCase());
+    // words = words.map((word) => word.toLowerCase());
     words = words.sort((a, b) => 0.5 - Math.random());
 
     gameStart(words, category);
@@ -212,12 +240,16 @@ function checkScore(words, score, category) {
   if (score.every((e) => e === true)) {
     // console.log(totalScore);
     if (levelSelector.value === "EASY") {
-      totalScore += 3;
+      totalScore += 0.1;
+      //--------------------------------
+      // For Daughter
+      // totalScore += 3;
+      //--------------------------------
       scoreDiv.innerHTML = Math.floor(totalScore);
       // newPoints.innerHTML = "+3";
     }
     if (levelSelector.value === "DIFFICULT") {
-      totalScore += 0.1;
+      totalScore += 0.15;
       scoreDiv.innerHTML = Math.floor(totalScore);
       // newPoints.innerHTML = "+6";
       let letterTextNode = document.querySelectorAll(".letter-text");
@@ -300,7 +332,10 @@ function showNewWord(word, category) {
     let lettersArray = word.split("");
     lettersArray.forEach((letter) => {
       // ["s", "u", "m", "m", "e", "r"]
-      letter = letter.toUpperCase();
+      //--------------------------------
+      // For Daughter
+      // letter = letter.toUpperCase();
+      //--------------------------------
       let letterContainer = document.createElement("div");
       letterContainer.classList.add("letter-container");
       //Printed letter

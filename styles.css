@@ -315,9 +315,11 @@ select#level-selector {
 }
 
 .category {
+    min-width: 100px;
+    text-align: center;
     cursor: pointer;
     color: #fff;
-    padding: 5px 10px;
+    padding: 5px 14px;
     margin: 4px;
     font-size: 35px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
