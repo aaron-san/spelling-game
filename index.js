@@ -300,6 +300,7 @@ function showNewWord(word, category) {
     let lettersArray = word.split("");
     lettersArray.forEach((letter) => {
       // ["s", "u", "m", "m", "e", "r"]
+      letter = letter.toUpperCase();
       let letterContainer = document.createElement("div");
       letterContainer.classList.add("letter-container");
       //Printed letter
