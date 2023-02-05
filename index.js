@@ -237,8 +237,8 @@ function checkScore(words, score, category) {
   scoreDiv.classList.remove("show-new-score");
   let levelSelector = document.querySelector("#level-selector");
 
+  // If every letter is correct
   if (score.every((e) => e === true)) {
-    // console.log(totalScore);
     if (levelSelector.value === "EASY") {
       totalScore += 0.1;
       //--------------------------------
@@ -284,6 +284,7 @@ function checkScore(words, score, category) {
       for (container of wordContainer) {
         container.remove();
       }
+
       showNewWord(word, category);
       checkLetters(word, words, score, category);
     } else {
@@ -295,8 +296,18 @@ function checkScore(words, score, category) {
       }
     }
 
-    scoreDiv.style.opacity = "1";
-    scoreDiv.classList.add("show-new-score");
+    // Add success Checkmark
+    // function addCheckmark() {
+    //   let checkmark = document.createElement("div");
+    //   checkmark.classList.add("checkmark");
+    //   checkmark.innerText = "OK!";
+    // }
+
+    // addCheckmark();
+
+    // scoreDiv.style.opacity = "1";
+    // scoreDiv.classList.add("word-success");
+    // scoreDiv.classList.add("show-new-score");
   }
 }
 
@@ -306,6 +317,8 @@ function showNewWord(word, category) {
   // console.log("showNewWord - words:", words);
   // console.log("showNewWord - score:", score);
   // console.log("show new word");
+  let completion = document.querySelector(".completion");
+  completion.innerText = data[category].length;
 
   let levelSelector = document.querySelector("#level-selector");
   levelSelector.disabled = false;
@@ -380,10 +393,8 @@ scoreDiv.innerHTML = 0;
 
 //////// START GAME ////////////////////
 // Show new word on start button click
-// startButton.addEventListener("click", function () {
 
 function gameStart(words, category) {
-  // console.log("gameStart - words:", words);
   // startButton.style.display = "none";
   // let newPoints = document.querySelector("#new-points");
   // newPoints.style.display = "block";
@@ -402,7 +413,6 @@ function gameStart(words, category) {
       categoriesContainer.style.display = "flex";
       let scoreContainer = document.querySelector("#score-container");
       scoreContainer.style.display = "block";
-      // scoreContainer.style.top = "100px";
 
       // let newPoints = document.querySelector("#new-points");
       // newPoints.style.display = "none";
@@ -423,12 +433,13 @@ function gameStart(words, category) {
   let score = Array(word.replace(" ", "").length).fill(false);
 
   addLevelSelector(word, words, category);
-
+  // At start of game
   showNewWord(word, category);
 
   checkLetters(word, words, score, category);
 }
 // }
+// transition: all 3s; */
 
 ////////////////////////////////////////
 
@@ -447,10 +458,8 @@ function markLetters(id, word, words, score, category) {
     word.replace(" ", "").toLowerCase()[id].toUpperCase()
   ) {
     // Mark letter score as correct
-    // console.log(score, id);
     letterInput[id].value = word.replace(" ", "")[id];
     score[id] = true;
-    // console.log(score);
 
     checkScore(words, score, category);
     letterInput[id].classList.add("correct-letter");
@@ -462,16 +471,12 @@ function markLetters(id, word, words, score, category) {
   }
 }
 
+// Mark letters correct / incorrect
 function checkLetters(word, words, score, category) {
-  // console.log("checkLetters - word:", word);
-  // console.log("checkLetters - words:", words);
-  // console.log("checkLetters - score:", score);
-
   // Add event listeners to each letterInput
   let letterInput = document.querySelectorAll(".letter-input");
   for (let i = 0; i < word.length; i++) {
     //Select whole text when clicked
-    // console.log(letterInput[i]);
     if (letterInput[i] !== undefined) {
       letterInput[i].addEventListener("click", function () {
         letterInput[i].select();
@@ -481,14 +486,8 @@ function checkLetters(word, words, score, category) {
       // Mark if entered text is correct
       letterInput[i].addEventListener("keyup", function (event) {
         if (event.key >= "A" && event.key <= "z") {
-          // console.log("keyup:start - word:", word);
-          // console.log("keyup:start - words:", words);
-          // console.log("keyup:start - score:", score);
-          // console.log("keyup:start - category:", category);
-
           checkScore(words, score, category);
           markLetters(i, word, words, score, category);
-          // console.log("F:", word);
 
           // If wrong letter is entered, mark red and move to next unanswered or incorrect letter
           // Applied after marking green or red and cursor remains in same input before moving the focus
@@ -496,12 +495,6 @@ function checkLetters(word, words, score, category) {
             let indexOfIncorrectLetters = [];
             // Get the index of all letters that are not correct
             function getIndexOfIncorrectLetters() {
-              // let letterInput = document.querySelectorAll(".letter");
-              // console.log(
-              //   "getIndexOfIncorrectLetters - letterInput:",
-              //   letterInput
-              // );
-              // console.log("getIndexOfIncorrectLetters: - word:", word);
               // Collect the classes of each letterInput
               let classArray = [];
               for (let j = 0; j < word.replace(" ", "").length; j++) {
@@ -515,13 +508,26 @@ function checkLetters(word, words, score, category) {
                 }
               });
               let levelSelector = document.querySelector("#level-selector");
-              // console.log(word);
+
               if (
                 indexOfIncorrectLetters.length < word.replace(" ", "").length
               ) {
                 levelSelector.disabled = true;
+                // document.body.style.background = "green";
               } else {
                 levelSelector.disabled = false;
+              }
+              if (indexOfIncorrectLetters.length === 0) {
+                //   document.body.style.background = "black";
+                // setTimeout(showSuccess, 2000);
+                // setTimeout(hideSuccess, 1000);
+                // Add success Checkmark
+                // function addCheckmark() {
+                //   let checkmark = document.createElement("div");
+                //   checkmark.classList.add("checkmark");
+                //   checkmark.innerText = "OK!";
+                // }
+                // addCheckmark();
               }
             }
 
