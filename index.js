@@ -171,7 +171,7 @@ let data = {
 };
 
 // Make deep copy
-const dataClone = JSON.parse(JSON.stringify(data));
+var dataClone = JSON.parse(JSON.stringify(data));
 
 // Get the categories from the DOM elements
 let categories = document.querySelectorAll(".category");
@@ -308,7 +308,7 @@ function checkScore(words, score, category) {
 // Show new word
 function showNewWord(word, category, dataClone) {
   let completion = document.querySelector(".completion");
-  const totalLength = dataClone[category].length;
+  var totalLength = dataClone[category].length;
   completion.innerText = `${
     totalLength - data[category].length
   } / ${totalLength} 語`;
