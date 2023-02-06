@@ -1,5 +1,5 @@
 let title = document.querySelector("#title");
-title.addEventListener("click", () => {
+title.addEventListener("click", function () {
   let mainContainer = document.querySelector("#main-container");
   mainContainer.style.display = "none";
   let categoriesContainer = document.querySelector(".categories-container");
@@ -188,7 +188,7 @@ for (i = 0; i < categoriesArray.length; i++) {
   let categoryElement = document.querySelector("." + categoriesArray[i]);
   let category = categoryElement.classList[1];
 
-  categoryElement.addEventListener("click", () => {
+  categoryElement.addEventListener("click", function () {
     mainContainer.style.display = "flex";
     categoriesContainer.style.display = "none";
 
@@ -203,7 +203,7 @@ for (i = 0; i < categoriesArray.length; i++) {
   });
 }
 
-let clearWordContainer = () => {
+let clearWordContainer = function () {
   let wordContainer = document.querySelectorAll(".word-container");
   for (container of wordContainer) {
     container.remove();
@@ -222,7 +222,7 @@ function addLevelSelector(word, words, category) {
 
   // let cover = document.querySelector("#cover");
   // console.log(levelSelector.value);
-  levelSelector.addEventListener("change", () => {
+  levelSelector.addEventListener("change", function () {
     let mainContainer = document.querySelector("#main-container");
     mainContainer.style.display = "none";
     let categoriesContainer = document.querySelector(".categories-container");
