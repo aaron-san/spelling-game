@@ -286,7 +286,7 @@ function checkScore(words, score, category) {
       let word = words.pop();
 
       // let letterInput = document.querySelectorAll(".letter");
-      let score = Array(word.replace(" ", "").length).fill(false);
+      let score = Array(word.replaceAll(" ", "").length).fill(false);
 
       // Remove and reset word container
       let wordContainer = document.querySelectorAll(".word-container");
@@ -326,6 +326,7 @@ function showNewWord(word, category, dataClone) {
   // Loop over each word
   componentWords = word.split(" ");
   // ["summer", "festival"]
+  console.log(componentWords);
 
   componentWords.forEach((word) => {
     // ["summer"]
@@ -351,11 +352,11 @@ function showNewWord(word, category, dataClone) {
         letterText.innerText = letter;
       }
 
-      //Input letter
+      //Create input boxes for each letter of word
       let letterInput = document.createElement("input");
       letterInput.classList.add("letter-input");
       letterInput.type = "text";
-      letterInput.autocapitalize = "none";
+      // letterInput.autocapitalize = "none";
       letterInput.classList.add("success");
       letterInput.maxLength = 1;
 
@@ -420,13 +421,13 @@ function gameStart(words, category) {
   //     }
   //     let word = words.pop();
   //     showNewWord(word, category, dataClone);
-  //     let score = Array(word.replace(" ", "").length).fill(false);
+  //     let score = Array(word.replaceAll(" ", "").length).fill(false);
   //     checkLetters(word, words, score, category);
   //   }
   // };
 
   let word = words.pop();
-  let score = Array(word.replace(" ", "").length).fill(false);
+  let score = Array(word.replaceAll(" ", "").length).fill(false);
 
   addLevelSelector(word, words, category);
   // At start of game
@@ -451,10 +452,10 @@ function markLetters(id, word, words, score, category) {
 
   if (
     inputValue.toUpperCase() ===
-    word.replace(" ", "").toLowerCase()[id].toUpperCase()
+    word.replaceAll(" ", "").toLowerCase()[id].toUpperCase()
   ) {
     // Mark letter score as correct
-    letterInput[id].value = word.replace(" ", "")[id];
+    letterInput[id].value = word.replaceAll(" ", "")[id];
     score[id] = true;
 
     checkScore(words, score, category);
@@ -493,7 +494,8 @@ function checkLetters(word, words, score, category) {
             function getIndexOfIncorrectLetters() {
               // Collect the classes of each letterInput
               let classArray = [];
-              for (let j = 0; j < word.replace(" ", "").length; j++) {
+
+              for (let j = 0; j < word.replaceAll(" ", "").length; j++) {
                 let classValue = letterInput[j].classList.value;
                 classArray.push(classValue);
               }
@@ -506,7 +508,7 @@ function checkLetters(word, words, score, category) {
               let levelSelector = document.querySelector("#level-selector");
 
               if (
-                indexOfIncorrectLetters.length < word.replace(" ", "").length
+                indexOfIncorrectLetters.length < word.replaceAll(" ", "").length
               ) {
                 levelSelector.disabled = true;
                 // document.body.style.background = "green";
