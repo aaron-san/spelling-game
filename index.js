@@ -249,7 +249,7 @@ function checkScore(words, score, category) {
   // If every letter is correct
   if (score.every((e) => e === true)) {
     if (levelSelector.value === "EASY") {
-      totalScore += 0.1001;
+      totalScore += 0.10001;
       //--------------------------------
       // For Daughter
       // totalScore += 3;
@@ -258,7 +258,7 @@ function checkScore(words, score, category) {
       // newPoints.innerHTML = "+3";
     }
     if (levelSelector.value === "DIFFICULT") {
-      totalScore += 0.15;
+      totalScore += 0.15001;
       scoreDiv.innerHTML = Math.floor(totalScore);
       // newPoints.innerHTML = "+6";
       let letterTextNode = document.querySelectorAll(".letter-text");
@@ -299,8 +299,8 @@ function checkScore(words, score, category) {
     } else {
       // Remove current word from container
       clearWordContainer();
-      // let passButton = document.querySelector("#pass-button");
-      // passButton.style.display = "none";
+      let passButton = document.querySelector("#pass-button");
+      passButton.style.display = "none";
     }
   }
 }
@@ -397,34 +397,34 @@ function gameStart(words, category) {
 
   // scoreDiv.innerHTML = Math.floor(totalScore);
 
-  // let passButton = document.querySelector("#pass-button");
-  // passButton.style.display = "block";
+  let passButton = document.querySelector("#pass-button");
+  passButton.style.display = "block";
 
   // Set new word on pass
-  // passButton.onclick = () => {
-  //   if (words.length === 0) {
-  //     mainContainer.style.display = "none";
-  //     categoriesContainer.style.display = "flex";
-  //     let scoreContainer = document.querySelector("#score-container");
-  //     scoreContainer.style.display = "block";
-  //     let wordContainer = document.querySelectorAll(".word-container");
-  //     for (container of wordContainer) {
-  //       container.remove();
-  //     }
-  //     // let newPoints = document.querySelector("#new-points");
-  //     // newPoints.style.display = "none";
-  //   } else {
-  //     // Clear word containers before new word
-  //     let wordContainer = document.querySelectorAll(".word-container");
-  //     for (container of wordContainer) {
-  //       container.remove();
-  //     }
-  //     let word = words.pop();
-  //     showNewWord(word, category, dataClone);
-  //     let score = Array(word.replaceAll(" ", "").length).fill(false);
-  //     checkLetters(word, words, score, category);
-  //   }
-  // };
+  passButton.onclick = () => {
+    if (words.length === 0) {
+      mainContainer.style.display = "none";
+      categoriesContainer.style.display = "flex";
+      let scoreContainer = document.querySelector("#score-container");
+      scoreContainer.style.display = "block";
+      let wordContainer = document.querySelectorAll(".word-container");
+      for (container of wordContainer) {
+        container.remove();
+      }
+      // let newPoints = document.querySelector("#new-points");
+      // newPoints.style.display = "none";
+    } else {
+      // Clear word containers before new word
+      let wordContainer = document.querySelectorAll(".word-container");
+      for (container of wordContainer) {
+        container.remove();
+      }
+      let word = words.pop();
+      showNewWord(word, category, dataClone);
+      let score = Array(word.replaceAll(" ", "").length).fill(false);
+      checkLetters(word, words, score, category);
+    }
+  };
 
   let word = words.pop();
   let score = Array(word.replaceAll(" ", "").length).fill(false);
