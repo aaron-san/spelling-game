@@ -169,6 +169,8 @@ let data = {
     "Star Festival",
   ],
 };
+// const dataClone = Object.assign({}, data);
+const dataClone = JSON.parse(JSON.stringify(data));
 
 // Get the categories from the DOM elements
 let categories = document.querySelectorAll(".category");
@@ -200,6 +202,13 @@ for (i = 0; i < categoriesArray.length; i++) {
   });
 }
 
+let clearWordContainer = () => {
+  let wordContainer = document.querySelectorAll(".word-container");
+  for (container of wordContainer) {
+    container.remove();
+  }
+};
+
 // let getRandomNum = () => Math.floor(Math.random() * words.length);
 
 function addLevelSelector(word, words, category) {
@@ -217,10 +226,9 @@ function addLevelSelector(word, words, category) {
     mainContainer.style.display = "none";
     let categoriesContainer = document.querySelector(".categories-container");
     categoriesContainer.style.display = "flex";
-    let wordContainer = document.querySelectorAll(".word-container");
-    for (container of wordContainer) {
-      container.remove();
-    }
+
+    // Remove current word from container
+    clearWordContainer();
 
     if (levelSelector.value === "EASY") {
       levelSelector.style.backgroundColor = "lightcyan";
@@ -271,11 +279,8 @@ function checkScore(words, score, category) {
       let categoryNode = document.querySelector("." + category);
       // categoryNode.classList.add("complete-category");
       categoryNode.id = "complete-category";
-      // Remove and reset word container
-      let wordContainer = document.querySelectorAll(".word-container");
-      for (container of wordContainer) {
-        container.remove();
-      }
+      // Remove current word from container
+      clearWordContainer();
     }
 
     if (words.length > 0) {
@@ -290,13 +295,11 @@ function checkScore(words, score, category) {
         container.remove();
       }
 
-      showNewWord(word, category);
+      showNewWord(word, category, dataClone);
       checkLetters(word, words, score, category);
     } else {
-      let wordContainer = document.querySelectorAll(".word-container");
-      for (container of wordContainer) {
-        container.remove();
-      }
+      // Remove current word from container
+      clearWordContainer();
       let passButton = document.querySelector("#pass-button");
       passButton.style.display = "none";
     }
@@ -317,13 +320,14 @@ function checkScore(words, score, category) {
 }
 
 // Show new word
-function showNewWord(word, category) {
-  // console.log("showNewWord - word:", word);
-  // console.log("showNewWord - words:", words);
-  // console.log("showNewWord - score:", score);
-  // console.log("show new word");
+function showNewWord(word, category, dataClone) {
+  console.log(dataClone[category].length);
+
   let completion = document.querySelector(".completion");
-  completion.innerText = data[category].length;
+  const totalLength = dataClone[category].length;
+  completion.innerText = `${
+    totalLength - data[category].length
+  } / ${totalLength} 語`;
 
   let levelSelector = document.querySelector("#level-selector");
   levelSelector.disabled = false;
@@ -431,7 +435,7 @@ function gameStart(words, category) {
         container.remove();
       }
       let word = words.pop();
-      showNewWord(word, category);
+      showNewWord(word, category, dataClone);
       let score = Array(word.replace(" ", "").length).fill(false);
       checkLetters(word, words, score, category);
     }
@@ -442,7 +446,7 @@ function gameStart(words, category) {
 
   addLevelSelector(word, words, category);
   // At start of game
-  showNewWord(word, category);
+  showNewWord(word, category, dataClone);
 
   checkLetters(word, words, score, category);
 }
