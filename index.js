@@ -5,7 +5,7 @@ title.addEventListener("click", function () {
   let categoriesContainer = document.querySelector(".categories-container");
   categoriesContainer.style.display = "flex";
   let wordContainer = document.querySelectorAll(".word-container");
-  wordContainer.forEach((container) => {
+  wordContainer.forEach(function (container) {
     container.remove();
   });
 });
@@ -178,7 +178,7 @@ let categories = document.querySelectorAll(".category");
 // let categories = Array.from(categoriesContainer.children);
 
 let categoriesArray = [];
-categories.forEach((el) => {
+categories.forEach(function (el) {
   categoriesArray.push(el.classList[1]);
 });
 
@@ -197,7 +197,9 @@ for (i = 0; i < categoriesArray.length; i++) {
     // All words to lowercase
     // words = words.concat(words);
     // words = words.map((word) => word.toLowerCase());
-    words = words.sort((a, b) => 0.5 - Math.random());
+    words = words.sort(function (a, b) {
+      0.5 - Math.random();
+    });
 
     gameStart(words, category);
   });
@@ -205,7 +207,7 @@ for (i = 0; i < categoriesArray.length; i++) {
 
 function clearWordContainer() {
   let wordContainer = document.querySelectorAll(".word-container");
-  wordContainer.forEach((container) => {
+  wordContainer.forEach(function (container) {
     container.remove();
   });
 }
@@ -247,7 +249,11 @@ function checkScore(words, score, category) {
   let levelSelector = document.querySelector("#level-selector");
 
   // If every letter is correct
-  if (score.every((e) => e === true)) {
+  if (
+    score.every(function (e) {
+      e === true;
+    })
+  ) {
     if (levelSelector.value === "EASY") {
       totalScore += 0.1001;
       //--------------------------------
@@ -328,7 +334,7 @@ function showNewWord(word, category, dataClone) {
   // ["summer", "festival"]
   console.log(componentWords);
 
-  componentWords.forEach((word) => {
+  componentWords.forEach(function (word) {
     // ["summer"]
     let wordContainer = document.createElement("div");
     wordContainer.classList.add("word-container");
@@ -337,7 +343,7 @@ function showNewWord(word, category, dataClone) {
     //Letter container contains the text and the input box below it
     // Iterate over letters
     let lettersArray = word.split("");
-    lettersArray.forEach((letter) => {
+    lettersArray.forEach(function (letter) {
       // ["s", "u", "m", "m", "e", "r"]
       //--------------------------------
       // For Daughter
@@ -500,7 +506,7 @@ function checkLetters(word, words, score, category) {
                 classArray.push(classValue);
               }
               // Get index of incorrect letters
-              classArray.forEach((value, index) => {
+              classArray.forEach(function (value, index) {
                 if (!value.includes("correct-letter")) {
                   indexOfIncorrectLetters.push(index);
                 }
