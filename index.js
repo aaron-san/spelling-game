@@ -1,13 +1,13 @@
 let title = document.querySelector("#title");
-title.addEventListener("click", function () {
+title.addEventListener("click", () => {
   let mainContainer = document.querySelector("#main-container");
   mainContainer.style.display = "none";
   let categoriesContainer = document.querySelector(".categories-container");
   categoriesContainer.style.display = "flex";
   let wordContainer = document.querySelectorAll(".word-container");
-  wordContainer.forEach(function (container) {
+  for (container of wordContainer) {
     container.remove();
-  });
+  }
 });
 
 let categoriesContainer = document.querySelector(".categories-container");
@@ -171,14 +171,14 @@ let data = {
 };
 
 // Make deep copy
-var dataClone = JSON.parse(JSON.stringify(data));
+const dataClone = JSON.parse(JSON.stringify(data));
 
 // Get the categories from the DOM elements
 let categories = document.querySelectorAll(".category");
 // let categories = Array.from(categoriesContainer.children);
 
 let categoriesArray = [];
-categories.forEach(function (el) {
+categories.forEach((el) => {
   categoriesArray.push(el.classList[1]);
 });
 
@@ -188,7 +188,7 @@ for (i = 0; i < categoriesArray.length; i++) {
   let categoryElement = document.querySelector("." + categoriesArray[i]);
   let category = categoryElement.classList[1];
 
-  categoryElement.addEventListener("click", function () {
+  categoryElement.addEventListener("click", () => {
     mainContainer.style.display = "flex";
     categoriesContainer.style.display = "none";
 
@@ -197,20 +197,18 @@ for (i = 0; i < categoriesArray.length; i++) {
     // All words to lowercase
     // words = words.concat(words);
     // words = words.map((word) => word.toLowerCase());
-    words = words.sort(function (a, b) {
-      0.5 - Math.random();
-    });
+    words = words.sort((a, b) => 0.5 - Math.random());
 
     gameStart(words, category);
   });
 }
 
-function clearWordContainer() {
+let clearWordContainer = () => {
   let wordContainer = document.querySelectorAll(".word-container");
-  wordContainer.forEach(function (container) {
+  for (container of wordContainer) {
     container.remove();
-  });
-}
+  }
+};
 
 // let getRandomNum = () => Math.floor(Math.random() * words.length);
 
@@ -218,13 +216,13 @@ function addLevelSelector(word, words, category) {
   let levelSelector = document.querySelector("select#level-selector");
   let optionArray = document.querySelectorAll("option");
 
-  optionArray.forEach(function (option) {
+  for (option of optionArray) {
     option.style.backgroundColor = "#fff";
-  });
+  }
 
   // let cover = document.querySelector("#cover");
   // console.log(levelSelector.value);
-  levelSelector.addEventListener("change", function () {
+  levelSelector.addEventListener("change", () => {
     let mainContainer = document.querySelector("#main-container");
     mainContainer.style.display = "none";
     let categoriesContainer = document.querySelector(".categories-container");
@@ -249,11 +247,7 @@ function checkScore(words, score, category) {
   let levelSelector = document.querySelector("#level-selector");
 
   // If every letter is correct
-  if (
-    score.every(function (e) {
-      e === true;
-    })
-  ) {
+  if (score.every((e) => e === true)) {
     if (levelSelector.value === "EASY") {
       totalScore += 0.1001;
       //--------------------------------
@@ -296,9 +290,9 @@ function checkScore(words, score, category) {
 
       // Remove and reset word container
       let wordContainer = document.querySelectorAll(".word-container");
-      wordContainer.forEach(function (container) {
+      for (container of wordContainer) {
         container.remove();
-      });
+      }
 
       showNewWord(word, category, dataClone);
       checkLetters(word, words, score, category);
@@ -314,9 +308,10 @@ function checkScore(words, score, category) {
 // Show new word
 function showNewWord(word, category, dataClone) {
   let completion = document.querySelector(".completion");
-  var totalLength = dataClone[category].length;
-  completion.innerText =
-    totalLength - data[category].length + "/" + totalLength + "語";
+  const totalLength = dataClone[category].length;
+  completion.innerText = `${
+    totalLength - data[category].length
+  } / ${totalLength} 語`;
 
   let levelSelector = document.querySelector("#level-selector");
   levelSelector.disabled = false;
@@ -333,7 +328,7 @@ function showNewWord(word, category, dataClone) {
   // ["summer", "festival"]
   console.log(componentWords);
 
-  componentWords.forEach(function (word) {
+  componentWords.forEach((word) => {
     // ["summer"]
     let wordContainer = document.createElement("div");
     wordContainer.classList.add("word-container");
@@ -342,7 +337,7 @@ function showNewWord(word, category, dataClone) {
     //Letter container contains the text and the input box below it
     // Iterate over letters
     let lettersArray = word.split("");
-    lettersArray.forEach(function (letter) {
+    lettersArray.forEach((letter) => {
       // ["s", "u", "m", "m", "e", "r"]
       //--------------------------------
       // For Daughter
@@ -499,13 +494,15 @@ function checkLetters(word, words, score, category) {
             function getIndexOfIncorrectLetters() {
               // Collect the classes of each letterInput
               let classArray = [];
-
+              // console.log(word.join(""));
+              // for (let j = 0; j < word.replaceAll(" ", "").length; j++) {
+              // console.log(letterInput);
               for (let j = 0; j < word.replaceAll(" ", "").length; j++) {
                 let classValue = letterInput[j].classList.value;
                 classArray.push(classValue);
               }
               // Get index of incorrect letters
-              classArray.forEach(function (value, index) {
+              classArray.forEach((value, index) => {
                 if (!value.includes("correct-letter")) {
                   indexOfIncorrectLetters.push(index);
                 }
