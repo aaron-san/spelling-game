@@ -439,6 +439,7 @@ select#level-selector {
         justify-content: flex-start;
         margin: 3px 0;
         padding: 0;
+        width: 80vw;
     }
     .letter-text {
         width: 30px;
