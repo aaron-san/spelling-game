@@ -65,9 +65,9 @@ let data = {
     "soccer",
     "softball",
     "swimming",
-    "tabletennis",
+    "table tennis",
     "tennis",
-    "trackandfield",
+    "track and field",
     "volleyball",
   ],
   animals: [
@@ -271,6 +271,11 @@ function checkScore(words, score, category) {
       let categoryNode = document.querySelector("." + category);
       // categoryNode.classList.add("complete-category");
       categoryNode.id = "complete-category";
+      // Remove and reset word container
+      let wordContainer = document.querySelectorAll(".word-container");
+      for (container of wordContainer) {
+        container.remove();
+      }
     }
 
     if (words.length > 0) {
@@ -288,12 +293,12 @@ function checkScore(words, score, category) {
       showNewWord(word, category);
       checkLetters(word, words, score, category);
     } else {
-      let passButton = document.querySelector("#pass-button");
-      passButton.style.display = "none";
       let wordContainer = document.querySelectorAll(".word-container");
       for (container of wordContainer) {
         container.remove();
       }
+      let passButton = document.querySelector("#pass-button");
+      passButton.style.display = "none";
     }
 
     // Add success Checkmark
@@ -413,7 +418,10 @@ function gameStart(words, category) {
       categoriesContainer.style.display = "flex";
       let scoreContainer = document.querySelector("#score-container");
       scoreContainer.style.display = "block";
-
+      let wordContainer = document.querySelectorAll(".word-container");
+      for (container of wordContainer) {
+        container.remove();
+      }
       // let newPoints = document.querySelector("#new-points");
       // newPoints.style.display = "none";
     } else {
