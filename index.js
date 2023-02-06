@@ -218,9 +218,9 @@ function addLevelSelector(word, words, category) {
   let levelSelector = document.querySelector("select#level-selector");
   let optionArray = document.querySelectorAll("option");
 
-  for (option of optionArray) {
+  optionArray.forEach(function (option) {
     option.style.backgroundColor = "#fff";
-  }
+  });
 
   // let cover = document.querySelector("#cover");
   // console.log(levelSelector.value);
@@ -296,9 +296,9 @@ function checkScore(words, score, category) {
 
       // Remove and reset word container
       let wordContainer = document.querySelectorAll(".word-container");
-      for (container of wordContainer) {
+      wordContainer.forEach(function (container) {
         container.remove();
-      }
+      });
 
       showNewWord(word, category, dataClone);
       checkLetters(word, words, score, category);
