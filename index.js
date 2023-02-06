@@ -5,9 +5,9 @@ title.addEventListener("click", function () {
   let categoriesContainer = document.querySelector(".categories-container");
   categoriesContainer.style.display = "flex";
   let wordContainer = document.querySelectorAll(".word-container");
-  for (container of wordContainer) {
+  wordContainer.forEach((container) => {
     container.remove();
-  }
+  });
 });
 
 let categoriesContainer = document.querySelector(".categories-container");
