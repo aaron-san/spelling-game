@@ -249,7 +249,7 @@ function checkScore(words, score, category) {
   // If every letter is correct
   if (score.every((e) => e === true)) {
     if (levelSelector.value === "EASY") {
-      totalScore += 0.1;
+      totalScore += 0.1001;
       //--------------------------------
       // For Daughter
       // totalScore += 3;
@@ -274,11 +274,9 @@ function checkScore(words, score, category) {
       let scoreContainer = document.querySelector("#score-container");
       scoreContainer.style.display = "block";
 
-      // let newPoints = document.querySelector("#new-points");
-      // newPoints.style.display = "none";
       // go to homepage and darken complete category
       let categoryNode = document.querySelector("." + category);
-      // categoryNode.classList.add("complete-category");
+
       categoryNode.id = "complete-category";
       // Remove current word from container
       clearWordContainer();
@@ -301,22 +299,9 @@ function checkScore(words, score, category) {
     } else {
       // Remove current word from container
       clearWordContainer();
-      let passButton = document.querySelector("#pass-button");
-      passButton.style.display = "none";
+      // let passButton = document.querySelector("#pass-button");
+      // passButton.style.display = "none";
     }
-
-    // Add success Checkmark
-    // function addCheckmark() {
-    //   let checkmark = document.createElement("div");
-    //   checkmark.classList.add("checkmark");
-    //   checkmark.innerText = "OK!";
-    // }
-
-    // addCheckmark();
-
-    // scoreDiv.style.opacity = "1";
-    // scoreDiv.classList.add("word-success");
-    // scoreDiv.classList.add("show-new-score");
   }
 }
 
@@ -411,34 +396,34 @@ function gameStart(words, category) {
 
   // scoreDiv.innerHTML = Math.floor(totalScore);
 
-  let passButton = document.querySelector("#pass-button");
-  passButton.style.display = "block";
+  // let passButton = document.querySelector("#pass-button");
+  // passButton.style.display = "block";
 
   // Set new word on pass
-  passButton.onclick = () => {
-    if (words.length === 0) {
-      mainContainer.style.display = "none";
-      categoriesContainer.style.display = "flex";
-      let scoreContainer = document.querySelector("#score-container");
-      scoreContainer.style.display = "block";
-      let wordContainer = document.querySelectorAll(".word-container");
-      for (container of wordContainer) {
-        container.remove();
-      }
-      // let newPoints = document.querySelector("#new-points");
-      // newPoints.style.display = "none";
-    } else {
-      // Clear word containers before new word
-      let wordContainer = document.querySelectorAll(".word-container");
-      for (container of wordContainer) {
-        container.remove();
-      }
-      let word = words.pop();
-      showNewWord(word, category, dataClone);
-      let score = Array(word.replace(" ", "").length).fill(false);
-      checkLetters(word, words, score, category);
-    }
-  };
+  // passButton.onclick = () => {
+  //   if (words.length === 0) {
+  //     mainContainer.style.display = "none";
+  //     categoriesContainer.style.display = "flex";
+  //     let scoreContainer = document.querySelector("#score-container");
+  //     scoreContainer.style.display = "block";
+  //     let wordContainer = document.querySelectorAll(".word-container");
+  //     for (container of wordContainer) {
+  //       container.remove();
+  //     }
+  //     // let newPoints = document.querySelector("#new-points");
+  //     // newPoints.style.display = "none";
+  //   } else {
+  //     // Clear word containers before new word
+  //     let wordContainer = document.querySelectorAll(".word-container");
+  //     for (container of wordContainer) {
+  //       container.remove();
+  //     }
+  //     let word = words.pop();
+  //     showNewWord(word, category, dataClone);
+  //     let score = Array(word.replace(" ", "").length).fill(false);
+  //     checkLetters(word, words, score, category);
+  //   }
+  // };
 
   let word = words.pop();
   let score = Array(word.replace(" ", "").length).fill(false);
