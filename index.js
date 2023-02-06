@@ -1,18 +1,10 @@
 let title = document.querySelector("#title");
 title.addEventListener("click", () => {
-  let mainContainer = document.querySelector("#main-container");
-  mainContainer.style.display = "none";
-  let categoriesContainer = document.querySelector(".categories-container");
-  categoriesContainer.style.display = "flex";
-  let wordContainer = document.querySelectorAll(".word-container");
-  for (container of wordContainer) {
-    container.remove();
-  }
+  clearPage();
 });
 
-let categoriesContainer = document.querySelector(".categories-container");
-
-let scoreContainer = document.querySelector("#score-container");
+// let categoriesContainer = document.querySelector(".categories-container");
+// let scoreContainer = document.querySelector("#score-container");
 // scoreContainer.style.display = "block";
 // scoreContainer.style.top = "100px";
 
@@ -182,24 +174,27 @@ categories.forEach((el) => {
   categoriesArray.push(el.classList[1]);
 });
 
-let mainContainer = document.querySelector("#main-container");
-
 for (i = 0; i < categoriesArray.length; i++) {
   let categoryElement = document.querySelector("." + categoriesArray[i]);
   let category = categoryElement.classList[1];
 
   categoryElement.addEventListener("click", () => {
+    let mainContainer = document.querySelector("#main-container");
     mainContainer.style.display = "flex";
+    let categoriesContainer = document.querySelector(".categories-container");
     categoriesContainer.style.display = "none";
 
-    let words = data[category];
+    let words = JSON.parse(JSON.stringify(data[category]));
 
+    let correctWordCount = 0;
     // All words to lowercase
     // words = words.concat(words);
     // words = words.map((word) => word.toLowerCase());
+
+    // Randomize (shuffle) word order
     words = words.sort((a, b) => 0.5 - Math.random());
 
-    gameStart(words, category);
+    gameStart(words, category, correctWordCount);
   });
 }
 
@@ -242,12 +237,13 @@ function addLevelSelector(word, words, category) {
 }
 
 // Check if entered word is correct and generate new word
-function checkScore(words, score, category) {
+function checkScore(words, score, category, correctWordCount) {
   scoreDiv.classList.remove("show-new-score");
   let levelSelector = document.querySelector("#level-selector");
 
   // If every letter is correct
   if (score.every((e) => e === true)) {
+    // correctWordCount += 1;
     if (levelSelector.value === "EASY") {
       totalScore += 0.10001;
       //--------------------------------
@@ -267,19 +263,23 @@ function checkScore(words, score, category) {
       }
     }
 
+    // console.log(words.length);
     if (words.length === 0) {
-      mainContainer.style.display = "none";
-      categoriesContainer.style.display = "flex";
+      clearPage();
+
       levelSelector.disable = false;
-      let scoreContainer = document.querySelector("#score-container");
-      scoreContainer.style.display = "block";
+
+      console.log("page cleared");
+      console.log(words);
 
       // go to homepage and darken complete category
-      let categoryNode = document.querySelector("." + category);
-
-      categoryNode.id = "complete-category";
+      // if (correctWordCount == dataClone[category].length) {
+      //   let categoryNode = document.querySelector("." + category);
+      //   categoryNode.id = "complete-category";
+      // }
       // Remove current word from container
       clearWordContainer();
+      console.log("cleared");
     }
 
     if (words.length > 0) {
@@ -294,24 +294,23 @@ function checkScore(words, score, category) {
         container.remove();
       }
 
-      showNewWord(word, category, dataClone);
-      checkLetters(word, words, score, category);
+      showNewWord(word, words, category, dataClone);
+      checkLetters(word, words, score, category, correctWordCount);
     } else {
       // Remove current word from container
       clearWordContainer();
       let passButton = document.querySelector("#pass-button");
       passButton.style.display = "none";
     }
+    // correctWordCount = 0;
   }
 }
 
 // Show new word
-function showNewWord(word, category, dataClone) {
+function showNewWord(word, words, category, dataClone) {
   let completion = document.querySelector(".completion");
   const totalLength = dataClone[category].length;
-  completion.innerText = `${
-    totalLength - data[category].length
-  } / ${totalLength} 語`;
+  completion.innerText = `${totalLength - words.length} / ${totalLength} 語`;
 
   let levelSelector = document.querySelector("#level-selector");
   levelSelector.disabled = false;
@@ -326,12 +325,12 @@ function showNewWord(word, category, dataClone) {
   // Loop over each word
   componentWords = word.split(" ");
   // ["summer", "festival"]
-  console.log(componentWords);
 
   componentWords.forEach((word) => {
     // ["summer"]
     let wordContainer = document.createElement("div");
     wordContainer.classList.add("word-container");
+    let mainContainer = document.querySelector("#main-container");
     mainContainer.appendChild(wordContainer);
 
     //Letter container contains the text and the input box below it
@@ -385,14 +384,29 @@ scoreDiv.innerHTML = 0;
 // let newPoints = document.querySelector("#new-points");
 // let scoreContainer = document.querySelector("#score-container");
 
+let clearPage = () => {
+  let mainContainer = document.querySelector("#main-container");
+  mainContainer.style.display = "none";
+  let categoriesContainer = document.querySelector(".categories-container");
+  categoriesContainer.style.display = "flex";
+  let scoreContainer = document.querySelector("#score-container");
+  scoreContainer.style.display = "block";
+  let wordContainer = document.querySelectorAll(".word-container");
+  for (container of wordContainer) {
+    container.remove();
+  }
+  console.log("page cleared");
+  console.log(data);
+};
+
 //////// START GAME ////////////////////
 // Show new word on start button click
-
-function gameStart(words, category) {
+function gameStart(words, category, correctWordCount) {
   // startButton.style.display = "none";
   // let newPoints = document.querySelector("#new-points");
   // newPoints.style.display = "block";
   // newPoints.innerHTML = "+3";
+  let scoreContainer = document.querySelector("#score-container");
   scoreContainer.style.display = "block";
 
   // scoreDiv.innerHTML = Math.floor(totalScore);
@@ -403,14 +417,7 @@ function gameStart(words, category) {
   // Set new word on pass
   passButton.onclick = () => {
     if (words.length === 0) {
-      mainContainer.style.display = "none";
-      categoriesContainer.style.display = "flex";
-      let scoreContainer = document.querySelector("#score-container");
-      scoreContainer.style.display = "block";
-      let wordContainer = document.querySelectorAll(".word-container");
-      for (container of wordContainer) {
-        container.remove();
-      }
+      clearPage();
       // let newPoints = document.querySelector("#new-points");
       // newPoints.style.display = "none";
     } else {
@@ -420,20 +427,21 @@ function gameStart(words, category) {
         container.remove();
       }
       let word = words.pop();
-      showNewWord(word, category, dataClone);
+      showNewWord(word, words, category, dataClone);
       let score = Array(word.replaceAll(" ", "").length).fill(false);
-      checkLetters(word, words, score, category);
+      checkLetters(word, words, score, category, correctWordCount);
     }
   };
 
   let word = words.pop();
+  // console.log(word);
   let score = Array(word.replaceAll(" ", "").length).fill(false);
 
   addLevelSelector(word, words, category);
   // At start of game
-  showNewWord(word, category, dataClone);
+  showNewWord(word, words, category, dataClone);
 
-  checkLetters(word, words, score, category);
+  checkLetters(word, words, score, category, correctWordCount);
 }
 // }
 // transition: all 3s; */
@@ -441,7 +449,7 @@ function gameStart(words, category) {
 ////////////////////////////////////////
 
 // Mark entered letters green or red
-function markLetters(id, word, words, score, category) {
+function markLetters(id, word, words, score, category, correctWordCount) {
   // console.log("markLetters - word:", word);
   // console.log("markLetters - words:", words);
   // console.log("markLetters - score:", score);
@@ -458,7 +466,7 @@ function markLetters(id, word, words, score, category) {
     letterInput[id].value = word.replaceAll(" ", "")[id];
     score[id] = true;
 
-    checkScore(words, score, category);
+    checkScore(words, score, category, correctWordCount);
     letterInput[id].classList.add("correct-letter");
     letterInput[id].classList.remove("wrong-letter");
     letterInput[id].readOnly = "true";
@@ -469,7 +477,7 @@ function markLetters(id, word, words, score, category) {
 }
 
 // Mark letters correct / incorrect
-function checkLetters(word, words, score, category) {
+function checkLetters(word, words, score, category, correctWordCount) {
   // Add event listeners to each letterInput
   let letterInput = document.querySelectorAll(".letter-input");
   for (let i = 0; i < word.length; i++) {
@@ -483,8 +491,8 @@ function checkLetters(word, words, score, category) {
       // Mark if entered text is correct
       letterInput[i].addEventListener("keyup", function (event) {
         if (event.key >= "A" && event.key <= "z") {
-          checkScore(words, score, category);
-          markLetters(i, word, words, score, category);
+          checkScore(words, score, category, correctWordCount);
+          markLetters(i, word, words, score, category, correctWordCount);
 
           // If wrong letter is entered, mark red and move to next unanswered or incorrect letter
           // Applied after marking green or red and cursor remains in same input before moving the focus
@@ -544,10 +552,6 @@ function checkLetters(word, words, score, category) {
           let levelSelector = document.querySelector("#level-selector");
           setFocus(levelSelector);
         }
-        // console.log("keyup:end - word:", word);
-        // console.log("keyup:end - words:", words);
-        // console.log("keyup:end - score:", score);
-        // !!! score array doesn't update
       });
     }
   }
