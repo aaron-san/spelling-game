@@ -315,9 +315,8 @@ function checkScore(words, score, category) {
 function showNewWord(word, category, dataClone) {
   let completion = document.querySelector(".completion");
   var totalLength = dataClone[category].length;
-  completion.innerText = `${
-    totalLength - data[category].length
-  } / ${totalLength} 語`;
+  completion.innerText =
+    totalLength - data[category].length + "/" + totalLength + "語";
 
   let levelSelector = document.querySelector("#level-selector");
   levelSelector.disabled = false;
