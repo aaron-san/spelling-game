@@ -169,7 +169,8 @@ let data = {
     "Star Festival",
   ],
 };
-// const dataClone = Object.assign({}, data);
+
+// Make deep copy
 const dataClone = JSON.parse(JSON.stringify(data));
 
 // Get the categories from the DOM elements
@@ -321,8 +322,6 @@ function checkScore(words, score, category) {
 
 // Show new word
 function showNewWord(word, category, dataClone) {
-  console.log(dataClone[category].length);
-
   let completion = document.querySelector(".completion");
   const totalLength = dataClone[category].length;
   completion.innerText = `${
