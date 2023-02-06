@@ -203,12 +203,12 @@ for (i = 0; i < categoriesArray.length; i++) {
   });
 }
 
-let clearWordContainer = function () {
+function clearWordContainer() {
   let wordContainer = document.querySelectorAll(".word-container");
-  for (container of wordContainer) {
+  wordContainer.forEach((container) => {
     container.remove();
-  }
-};
+  });
+}
 
 // let getRandomNum = () => Math.floor(Math.random() * words.length);
 
