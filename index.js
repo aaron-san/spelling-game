@@ -133,6 +133,23 @@ let data = {
     "turn",
     "write",
   ],
+  actions2: [
+    "enjoy",
+    "get",
+    "have",
+    "help",
+    "join",
+    "like",
+    "live",
+    "look",
+    "make",
+    "play",
+    "practice",
+    "see",
+    "think",
+    "try",
+    "want",
+  ],
   seasons: ["fall", "spring", "summer", "winter"],
   months: [
     "January",
@@ -159,6 +176,21 @@ let data = {
     "New Years Day",
     "New Years Eve",
     "Star Festival",
+  ],
+  pasttense: ["ate", "enjoyed", "had", "saw", "went"],
+  nature: [
+    "desert",
+    "flower",
+    "forest",
+    "island",
+    "lake",
+    "mountain",
+    "pond",
+    "river",
+    "savanna",
+    "sea",
+    "tree",
+    "wetlands",
   ],
 };
 
@@ -216,7 +248,6 @@ function addLevelSelector(word, words, category) {
   }
 
   // let cover = document.querySelector("#cover");
-  // console.log(levelSelector.value);
   levelSelector.addEventListener("change", () => {
     let mainContainer = document.querySelector("#main-container");
     mainContainer.style.display = "none";
