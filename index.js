@@ -269,8 +269,8 @@ function checkScore(words, score, category, correctWordCount) {
 
       levelSelector.disable = false;
 
-      console.log("page cleared");
-      console.log(words);
+      // console.log("page cleared");
+      // console.log(words);
 
       // go to homepage and darken complete category
       if (correctWordCount == dataClone[category].length) {
