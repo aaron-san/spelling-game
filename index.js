@@ -243,7 +243,7 @@ function checkScore(words, score, category, correctWordCount) {
 
   // If every letter is correct
   if (score.every((e) => e === true)) {
-    // correctWordCount += 1;
+    correctWordCount += 1;
     if (levelSelector.value === "EASY") {
       totalScore += 0.10001;
       //--------------------------------
@@ -273,13 +273,13 @@ function checkScore(words, score, category, correctWordCount) {
       console.log(words);
 
       // go to homepage and darken complete category
-      // if (correctWordCount == dataClone[category].length) {
-      //   let categoryNode = document.querySelector("." + category);
-      //   categoryNode.id = "complete-category";
-      // }
+      if (correctWordCount == dataClone[category].length) {
+        let categoryNode = document.querySelector("." + category);
+        categoryNode.id = "complete-category";
+      }
       // Remove current word from container
       clearWordContainer();
-      console.log("cleared");
+      // console.log("cleared");
     }
 
     if (words.length > 0) {
@@ -395,8 +395,8 @@ let clearPage = () => {
   for (container of wordContainer) {
     container.remove();
   }
-  console.log("page cleared");
-  console.log(data);
+  // console.log("page cleared");
+  // console.log(data);
 };
 
 //////// START GAME ////////////////////
