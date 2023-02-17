@@ -190,7 +190,6 @@ select#level-selector {
   /* margin-top: 5px; */
   margin: 1px;
   background: none;
-  /* background-color: whitesmoke; */
   font-size: 40px;
   color: darkslategrey;
   font-family: "Poppins", sans-serif;
@@ -245,13 +244,13 @@ select#level-selector {
 }
 
 .correct-letter {
-  background-color: rgb(164, 239, 214);
-  color: rgba(0, 0, 0, 0.858);
+  /* background-color: rgb(164, 239, 214); */
+  color: rgb(21, 126, 126);
 }
 
 .wrong-letter {
   background-color: rgb(255, 202, 202);
-  color: rgba(0, 0, 0, 0.858);
+  color: rgb(21, 126, 126);
 }
 
 #score-container {
