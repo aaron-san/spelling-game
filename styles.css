@@ -461,14 +461,22 @@ select#level-selector {
     height: 130px;
   }
 
-  .word-container {
+  .words-container {
+    margin: 0 5px;
+    display: flex;
     justify-content: center;
+    /* flex-direction: column; */
+    gap: 30px;
     flex-wrap: wrap;
-    gap: 5px;
+  }
+  .word-container {
+    /* justify-content: center; */
+    /* flex-wrap: wrap; */
+    /* gap: 5px; */
     /* margin-left: 4px; */
     /* margin: 3px 5px; */
-    padding: 0;
-    width: 90vw;
+    /* padding: 0; */
+    /* width: 90vw; */
   }
   .letter-text {
     width: 30px;
@@ -484,7 +492,7 @@ select#level-selector {
   }
 
   .correct-letter {
-    background-color: rgba(120, 245, 204, 0.473);
+    /* background-color: rgba(120, 245, 204, 0.473); */
   }
 }
 
