@@ -357,12 +357,14 @@ function showNewWord(word, words, category, dataClone) {
   componentWords = word.split(" ");
   // ["summer", "festival"]
 
+  let wordsContainer = document.createElement("div");
+  wordsContainer.classList.add("words-container");
   componentWords.forEach((word) => {
     // ["summer"]
-    let wordContainer = document.createElement("div");
+    let wordContainer = document.createElement("span");
     wordContainer.classList.add("word-container");
     let mainContainer = document.querySelector("#main-container");
-    mainContainer.appendChild(wordContainer);
+    wordsContainer.appendChild(wordContainer);
 
     //Letter container contains the text and the input box below it
     // Iterate over letters
@@ -395,7 +397,8 @@ function showNewWord(word, words, category, dataClone) {
       letterContainer.appendChild(letterInput);
       wordContainer.appendChild(letterContainer);
     });
-    mainContainer.appendChild(wordContainer);
+    mainContainer.appendChild(wordsContainer);
+    // mainContainer.appendChild(wordContainer);
   });
 
   // Create input boxes for each letter of the word
