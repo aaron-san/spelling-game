@@ -389,7 +389,8 @@ function showNewWord(word, words, category, dataClone) {
       letterInput.classList.add("letter-input");
       letterInput.type = "text";
       // letterInput.autocapitalize = "none";
-      letterInput.classList.add("success");
+      // letterInput.classList.add("success");
+      // letterText.classList.add("success");
       letterInput.maxLength = 1;
 
       // Add letterText and letterInput column for each letter
@@ -488,6 +489,7 @@ function markLetters(id, word, words, score, category, correctWordCount) {
   // console.log("markLetters - words:", words);
   // console.log("markLetters - score:", score);
 
+  let letterText = document.querySelectorAll(".letter-text");
   let letterInput = document.querySelectorAll(".letter-input");
   // If the entered letter is correct
   let inputValue = letterInput[id].value;
@@ -502,6 +504,7 @@ function markLetters(id, word, words, score, category, correctWordCount) {
 
     checkScore(words, score, category, correctWordCount);
     letterInput[id].classList.add("correct-letter");
+    letterText[id].classList.add("correct-letter");
     letterInput[id].classList.remove("wrong-letter");
     letterInput[id].readOnly = "true";
     letterInput[id].style.outline = "none";

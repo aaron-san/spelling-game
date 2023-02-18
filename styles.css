@@ -162,7 +162,7 @@ select#level-selector {
   height: auto;
   /* padding: 1px; */
   justify-content: center;
-  gap: 12px;
+  gap: 5px;
 }
 
 .letter-container {
@@ -170,19 +170,24 @@ select#level-selector {
   margin: 0px;
   padding: 0px;
   flex-direction: column;
+  gap: 0;
 }
 
 .letter-text {
   width: 50px;
   /* border: 2px solid blue; */
-  border-radius: 5px;
+  /* border-radius: 5px; */
   /* padding: 5px 0 0 0; */
   /* margin: 1px; */
   color: rgb(21, 126, 126);
-  font-size: 40px;
+  font-size: 35px;
   font-family: "Poppins", sans-serif;
   /* box-shadow: 3px 3px 12px 1px gray; */
   text-align: center;
+}
+
+.letter-text.correct-letter {
+  visibility: hidden;
 }
 
 .letter-input {
@@ -192,11 +197,11 @@ select#level-selector {
   outline: none;
   border-bottom: 2px solid gray;
   /* border-radius: 5px; */
-  padding: 2px;
+  padding: 1px;
   /* margin-top: 5px; */
-  margin: 1px;
+  /* margin: 1px; */
   background: none;
-  font-size: 40px;
+  font-size: 35px;
   color: darkslategrey;
   font-family: "Poppins", sans-serif;
   /* box-shadow: var(--shadow); */
@@ -251,7 +256,7 @@ select#level-selector {
 
 .correct-letter {
   /* background-color: rgb(164, 239, 214); */
-  color: rgb(21, 126, 126);
+  /* color: rgb(21, 126, 126); */
 }
 
 .wrong-letter {
@@ -472,7 +477,7 @@ select#level-selector {
   .word-container {
     /* justify-content: center; */
     /* flex-wrap: wrap; */
-    /* gap: 5px; */
+    /* gap: 2px; */
     /* margin-left: 4px; */
     /* margin: 3px 5px; */
     /* padding: 0; */
@@ -481,14 +486,18 @@ select#level-selector {
   .letter-text {
     width: 30px;
     /* padding: 5px; */
-    font-size: 30px;
+    font-size: 25px;
+  }
+
+  .letter-text .success {
+    color: white;
   }
 
   .letter-input {
     width: 30px;
-    height: 50px;
+    /* height: 40px; */
     padding: 0px;
-    font-size: 30px;
+    font-size: 25px;
   }
 
   .correct-letter {
