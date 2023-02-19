@@ -231,7 +231,13 @@ for (i = 0; i < categoriesArray.length; i++) {
 }
 
 let clearWordContainer = () => {
+  let wordsContainer = document.querySelectorAll(".words-container");
   let wordContainer = document.querySelectorAll(".word-container");
+
+  // wordsContainer.remove();
+  // for (container of wordsContainer) {
+  //   container.remove();
+  // }
   for (container of wordContainer) {
     container.remove();
   }
@@ -326,6 +332,7 @@ function checkScore(words, score, category, correctWordCount) {
       }
 
       showNewWord(word, words, category, dataClone);
+
       checkLetters(word, words, score, category, correctWordCount);
     } else {
       // Remove current word from container
@@ -337,7 +344,11 @@ function checkScore(words, score, category, correctWordCount) {
   }
 }
 
+let wordsContainer = document.createElement("div");
+wordsContainer.classList.add("words-container");
+
 // Show new word
+
 function showNewWord(word, words, category, dataClone) {
   let completion = document.querySelector(".completion");
   const totalLength = dataClone[category].length;
@@ -357,8 +368,6 @@ function showNewWord(word, words, category, dataClone) {
   componentWords = word.split(" ");
   // ["summer", "festival"]
 
-  let wordsContainer = document.createElement("div");
-  wordsContainer.classList.add("words-container");
   componentWords.forEach((word) => {
     // ["summer"]
     let wordContainer = document.createElement("span");
@@ -398,8 +407,8 @@ function showNewWord(word, words, category, dataClone) {
       letterContainer.appendChild(letterInput);
       wordContainer.appendChild(letterContainer);
     });
-    mainContainer.appendChild(wordsContainer);
     // mainContainer.appendChild(wordContainer);
+    mainContainer.appendChild(wordsContainer);
   });
 
   // Create input boxes for each letter of the word
@@ -410,6 +419,10 @@ function showNewWord(word, words, category, dataClone) {
   // checkLetters(word, words, score);
   let score = Array(letterInput.length).fill(false);
   return score;
+}
+
+function delayedShowNewWord(word, words, category, dataClone) {
+  setTimeout(1000, () => showNewWord(word, words, category, dataClone));
 }
 
 // Add Score
@@ -463,6 +476,7 @@ function gameStart(words, category, correctWordCount) {
       }
       let word = words.pop();
       showNewWord(word, words, category, dataClone);
+
       let score = Array(word.replaceAll(" ", "").length).fill(false);
       checkLetters(word, words, score, category, correctWordCount);
     }
@@ -504,7 +518,7 @@ function markLetters(id, word, words, score, category, correctWordCount) {
 
     checkScore(words, score, category, correctWordCount);
     letterInput[id].classList.add("correct-letter");
-    letterText[id].classList.add("correct-letter");
+    letterText[id].classList.add("correct-letter-text");
     letterInput[id].classList.remove("wrong-letter");
     letterInput[id].readOnly = "true";
     letterInput[id].style.outline = "none";

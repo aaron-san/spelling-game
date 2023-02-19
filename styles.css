@@ -147,7 +147,9 @@ select#level-selector {
 .words-container {
   margin-top: 10px;
   display: flex;
-  gap: 80px;
+  gap: 70px;
+  /* border: 1px solid green; */
+  /* background-color: lightgreen; */
 }
 
 .word-container {
@@ -178,7 +180,7 @@ select#level-selector {
   /* border: 2px solid blue; */
   /* border-radius: 5px; */
   /* padding: 5px 0 0 0; */
-  /* margin: 1px; */
+  margin: 5px 0 5px 0;
   color: rgb(21, 126, 126);
   font-size: 35px;
   font-family: "Poppins", sans-serif;
@@ -186,23 +188,28 @@ select#level-selector {
   text-align: center;
 }
 
-.letter-text.correct-letter {
-  visibility: hidden;
+/* .letter-text.correct-letter-text {
+  /* visibility: hidden; */
+/* color: rgb(185, 220, 234); */
+/* } */
+
+.correct-letter-text {
+  color: rgba(21, 126, 126, 0.2);
 }
 
 .letter-input {
   width: 50px;
-  /* border: 1px solid lightsteelblue; */
-  border: none;
+  border: 1px solid lightsteelblue;
+  border-radius: 5px;
   outline: none;
-  border-bottom: 2px solid gray;
+  /* border-bottom: 2px solid gray; */
   /* border-radius: 5px; */
-  padding: 1px;
+  padding: 2px;
   /* margin-top: 5px; */
   /* margin: 1px; */
-  background: none;
-  font-size: 35px;
-  color: darkslategrey;
+  background-color: whitesmoke;
+  font-size: 45px;
+  color: rgb(21, 126, 126);
   font-family: "Poppins", sans-serif;
   /* box-shadow: var(--shadow); */
   text-align: center;
@@ -255,7 +262,7 @@ select#level-selector {
 }
 
 .correct-letter {
-  /* background-color: rgb(164, 239, 214); */
+  background-color: rgb(184, 255, 211);
   /* color: rgb(21, 126, 126); */
 }
 
@@ -501,7 +508,7 @@ select#level-selector {
   }
 
   .correct-letter {
-    /* background-color: rgba(120, 245, 204, 0.473); */
+    background-color: rgba(120, 245, 204, 0.473);
   }
 }
 
