@@ -9,11 +9,7 @@ body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   background: VAR(--main-theme);
-  background: radial-gradient(
-    whitesmoke 0%,
-    rgb(199, 239, 245) 100%,
-    rgb(164, 248, 249) 100%
-  );
+  background: radial-gradient(rgb(199, 239, 245) 90%, rgb(199, 239, 245) 90%);
   height: 100vh;
   /* background-color: bisque; */
   box-sizing: border-box;
