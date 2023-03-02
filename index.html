@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,16 @@
     <script src="index.js" type="text/javascript" defer></script>
     <title>Spelling Game</title>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F473YX6VM1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F473YX6VM1');
+</script>
+
 <body>
     <!-- <h1 class="title">Spelling Quiz</h1> -->
     <header>
@@ -32,23 +43,29 @@
             <div class="categories-container">
                 <div class="group">5th Grade</div>
                 <div class="fifth-grade">
-                    <div class="category fruits">果物</div>
-                    <div class="category foods">食べ物</div>
-                    <div class="category sports">スポーツ</div>
-                    <div class="category feelings">気持ち</div>
-                    <div class="category weather">天気</div>
-                    <div class="category months">月</div>
+                    <div class="category sports"><span class="num">①</span>スポーツ</div>
+                    <div class="category school"><span class="num">②</span>学校</div>
+                    <div class="category foods"><span class="num">④</span>食べ物</div>
+                    <div class="category months"><span class="num">⑤</span>月</div>
+                    <div class="category weather"><span class="num">⑨</span>天気</div>
+                    <div class="category feelings"><span class="num">⑩</span>気分</div>
+                    <div class="category actions1"><span class="num">⑬</span>動作など1</div>
+                    <div class="category actions2"><span class="num">⑭</span>動作など2</div>
+                    <div class="category directions"><span class="num">⑱</span>道案内</div>
+                    <div class="category seasons"><span class="num">㉖</span>季節</div>
+                    <div class="category annualevents"><span class="num">㉙</span>年中行事</div>
+                    <div class="category dailyactivities"><span class="num">㉚</span>一日の生活</div>
+                    <div class="category character"><span class="num">㉛</span>性格など</div>
                 </div>
                 <div class="group">6th Grade</div>
                 <div class="sixth-grade">
-                    <div class="category animals">動物</div>
-                    <div class="category nature">自然</div>
-                    <div class="category actions1">動作など1</div>
-                    <div class="category actions2">動作など2</div>
-                    <div class="category pasttense">したこと</div>
-                    <div class="category annualevents">年中行事</div>
-                    <div class="category seasons">季節</div>
-                    <div class="category schoolevents">学校行事</div>
+                    <div class="category animals"><span class="num">③</span>動物</div>
+                    <div class="category pasttense"><span class="num">⑯</span>したこと</div>
+                    <div class="category nature"><span class="num">⑰</span>自然</div>
+                    <div class="category body"><span class="num">㉓</span>体</div>
+                    <div class="category meals"><span class="num">㉖</span>食事</div>
+                    <div class="category fruits"><span class="num">㉘</span>果物</div>
+                    <div class="category schoolevents"><span class="num">㉚</span>学校行事</div>
                 </div>
             </div>
             <div id="game-screen">
