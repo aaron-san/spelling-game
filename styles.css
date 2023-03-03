@@ -106,7 +106,7 @@ select#level-selector {
   font-size: 1.4rem;
   border-radius: 5px;
   outline: none;
-  background-color: lightcyan;
+  background-color: rgba(199, 239, 245, 60%);
 }
 
 /* option {
@@ -562,4 +562,9 @@ select#level-selector {
   position: absolute;
   transform: scaleX(1.3, 1.8);
   transition: width 3s;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 0.5s;
 }

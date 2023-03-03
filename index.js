@@ -1,255 +1,10 @@
+import words from "./assets/words.json" assert { type: "json" };
+let data = words.data;
+
 let title = document.querySelector("#title");
 title.addEventListener("click", () => {
   clearPage();
 });
-
-// let categoriesContainer = document.querySelector(".categories-container");
-// let scoreContainer = document.querySelector("#score-container");
-// scoreContainer.style.display = "block";
-// scoreContainer.style.top = "100px";
-
-// let newPoints = document.querySelector("#new-points");
-// newPoints.style.display = "none";
-
-let data = {
-  school: [
-    "classroom",
-    "entrance",
-    "gym",
-    "library",
-    "music room",
-    "playground",
-    "restroom",
-    "school nurses office",
-    "school principals office",
-    "swimming pool",
-    "teachers office",
-  ],
-  dailyactivities: [
-    "brush my teeth",
-    "do my homework",
-    "get the newspaper",
-    "get up",
-    "go home",
-    "go to bed",
-    "go to school",
-    "have breakfast",
-    "have dinner",
-    "have lunch",
-    "play soccer",
-    "study English",
-    "take a bath",
-    "take out the garbage",
-    "walk my dog",
-    "wash the dishes",
-    "watch TV",
-  ],
-  meals: ["breakfast", "lunch", "dinner"],
-  body: [
-    "ear",
-    "eye",
-    "face",
-    "hand",
-    "head",
-    "knee",
-    "leg",
-    "mouth",
-    "nose",
-    "shoulder",
-    "teeth",
-    "toe",
-  ],
-  foods: [
-    "bread",
-    "curry and rice",
-    "French fries",
-    "hamburger",
-    "hot dog",
-    "grilled fish",
-    "omelet",
-    "pancakes",
-    "pie",
-    "pizza",
-    "rice",
-    "rice ball",
-    "fried chicken",
-    "salad",
-    "sandwich",
-    "sausage",
-    "spaghetti",
-    "steak",
-  ],
-  fruits: [
-    "apple",
-    "banana",
-    "cherry",
-    "grapes",
-    "kiwi fruit",
-    "lemon",
-    "melon",
-    "orange",
-    "peach",
-    "pineapple",
-    "strawberry",
-    "tomato",
-    "watermelon",
-  ],
-  sports: [
-    "badminton",
-    "baseball",
-    "basketball",
-    "dodgeball",
-    "skating",
-    "skiing",
-    "soccer",
-    "softball",
-    "swimming",
-    "table tennis",
-    "tennis",
-    "track and field",
-    "volleyball",
-  ],
-  animals: [
-    "bear",
-    "cow",
-    "horse",
-    "dog",
-    "cat",
-    "snake",
-    "spider",
-    "mouse",
-    "sheep",
-    "tiger",
-    "panda",
-    "monkey",
-  ],
-  weather: ["cloudy", "rainy", "snowy", "sunny"],
-  feelings: [
-    "busy",
-    "cold",
-    "fine",
-    "good",
-    "great",
-    "happy",
-    "hot",
-    "hungry",
-    "sad",
-    "sleepy",
-    "thirsty",
-    "tired",
-  ],
-  schoolevents: [
-    "chorus contest",
-    "drama festival",
-    "entrance ceremony",
-    "field trip",
-    "fire drill",
-    "graduation ceremony",
-    "music festival",
-    "school festival",
-    "school trip",
-    "sports day",
-    "summer vacation",
-    "swimming meet",
-    "volunteer day",
-  ],
-  actions1: [
-    "bake",
-    "buy",
-    "drink",
-    "cook",
-    "clean",
-    "dance",
-    "draw",
-    "eat",
-    "go",
-    "jump",
-    "listen",
-    "read",
-    "ride",
-    "run",
-    "sing",
-    "skate",
-    "speak",
-    "stop",
-    "study",
-    "swim",
-    "talk",
-    "teach",
-    "travel",
-    "turn",
-    "write",
-  ],
-  actions2: [
-    "enjoy",
-    "get",
-    "have",
-    "help",
-    "join",
-    "like",
-    "live",
-    "look",
-    "make",
-    "play",
-    "practice",
-    "see",
-    "think",
-    "try",
-    "want",
-  ],
-  seasons: ["fall", "spring", "summer", "winter"],
-  months: [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ],
-  annualevents: [
-    "April Fools Day",
-    "birthday",
-    "Childrens Day",
-    "Christmas",
-    "Dolls Festival",
-    "fireworks",
-    "Halloween",
-    "New Years Day",
-    "New Years Eve",
-    "Star Festival",
-  ],
-  pasttense: ["ate", "enjoyed", "had", "saw", "went"],
-  nature: [
-    "desert",
-    "flower",
-    "forest",
-    "island",
-    "lake",
-    "mountain",
-    "pond",
-    "river",
-    "savanna",
-    "sea",
-    "tree",
-    "wetlands",
-  ],
-  directions: ["block", "go", "left", "right", "see", "straight", "turn"],
-  character: [
-    "active",
-    "brave",
-    "friendly",
-    "funny",
-    "gentle",
-    "kind",
-    "strong",
-  ],
-};
 
 // Make deep copy
 const dataClone = JSON.parse(JSON.stringify(data));
@@ -263,7 +18,13 @@ categories.forEach((el) => {
   categoriesArray.push(el.classList[1]);
 });
 
-for (i = 0; i < categoriesArray.length; i++) {
+// function removeAllChildren(parent) {
+//   while (parent.firstChild) {
+//     parent.remove
+//   }
+// }
+
+for (let i = 0; i < categoriesArray.length; i++) {
   let categoryElement = document.querySelector("." + categoriesArray[i]);
   let category = categoryElement.classList[1];
 
@@ -287,17 +48,56 @@ for (i = 0; i < categoriesArray.length; i++) {
   });
 }
 
-let clearWordContainer = () => {
-  let wordsContainer = document.querySelectorAll(".words-container");
-  let wordContainer = document.querySelectorAll(".word-container");
+let bar = document.createElement("div");
+const progressBar = (totalComplete, totalLength) => {
+  bar.style.width = (totalComplete / totalLength) * 100 + "%";
+  bar.style.height = "20px";
+  bar.style.background = "blue";
+  bar.style.opacity = "0.3";
+  bar.style.left = "0";
+  bar.style.alignSelf = "start";
+  bar.style.borderRadius = "0 0 5px 5px";
+  // bar.style.margin = "0";
 
-  // wordsContainer.remove();
-  // for (container of wordsContainer) {
-  //   container.remove();
-  // }
-  for (container of wordContainer) {
-    container.remove();
+  const container = document.querySelector(".container");
+  container.prepend(bar);
+};
+// progressBar();
+
+let clearImage = () => {
+  let imgTag = document.querySelector("#image img");
+  imgTag.classList.add("fadeOut");
+  setTimeout(() => (imgTag.src = ""), 500);
+};
+
+const removeChilds = (parent) => {
+  while (parent.lastChild) {
+    console.log(parent.lastChild);
+    parent.removeChild(parent.lastChild);
   }
+};
+
+let clearWordContainer = () => {
+  let wordsContainer = document.querySelector(".words-container");
+  // console.log(wordsContainer);
+  wordsContainer.classList.add("fadeOut");
+  // for (c of wordsContainer) {
+  //   c.classList.add("fadeOut");
+  // }
+
+  setTimeout(() => {
+    removeChilds(wordsContainer);
+    // console.log("container remove");
+  }, 500);
+
+  // for (container of wordContainer) {
+  //   container.classList.add("fadeOut");
+  //   console.log("faded out");
+  //   setTimeout(() => {
+  //     container.remove();
+  //     console.log("container remove");
+  //   }, 500);
+  // }
 };
 
 // let getRandomNum = () => Math.floor(Math.random() * words.length);
@@ -306,7 +106,7 @@ function addLevelSelector(word, words, category) {
   let levelSelector = document.querySelector("select#level-selector");
   let optionArray = document.querySelectorAll("option");
 
-  for (option of optionArray) {
+  for (let option of optionArray) {
     option.style.backgroundColor = "#fff";
   }
 
@@ -318,6 +118,7 @@ function addLevelSelector(word, words, category) {
     categoriesContainer.style.display = "flex";
 
     // Remove current word from container
+    clearImage();
     clearWordContainer();
 
     if (levelSelector.value === "EASY") {
@@ -370,8 +171,11 @@ function checkScore(words, score, category, correctWordCount) {
       if (correctWordCount == dataClone[category].length) {
         let categoryNode = document.querySelector("." + category);
         categoryNode.id = "complete-category";
+
+        let num = document.querySelector("." + category + " span");
+        num.remove();
       }
-      // Remove current word from container
+      clearImage();
       clearWordContainer();
       // console.log("cleared");
     }
@@ -383,14 +187,10 @@ function checkScore(words, score, category, correctWordCount) {
       let score = Array(word.replaceAll(" ", "").length).fill(false);
 
       // Remove and reset word container
-      let wordContainer = document.querySelectorAll(".word-container");
-      for (container of wordContainer) {
-        container.remove();
-      }
+      clearImage();
+      clearWordContainer();
 
-      showNewWord(word, words, category, dataClone);
-
-      checkLetters(word, words, score, category, correctWordCount);
+      delayedShowNewWord(word, words, category, dataClone, correctWordCount);
     } else {
       // Remove current word from container
       clearWordContainer();
@@ -407,9 +207,20 @@ wordsContainer.classList.add("words-container");
 // Show new word
 
 function showNewWord(word, words, category, dataClone) {
+  // Reset faded-out image
+  let imgTag = document.querySelector("#image img");
+  imgTag.classList.remove("fadeOut");
+
+  // Reset faded-out word container
+  wordsContainer.classList.remove("fadeOut");
+
   let completion = document.querySelector(".completion");
-  const totalLength = dataClone[category].length;
-  completion.innerText = `${totalLength - words.length} / ${totalLength} 語`;
+  let totalLength = dataClone[category].length;
+  let currentNum = totalLength - words.length;
+  completion.innerText = `${currentNum} / ${totalLength} 語`;
+  let totalComplete = currentNum - 1;
+
+  progressBar(totalComplete, totalLength);
 
   let levelSelector = document.querySelector("#level-selector");
   levelSelector.disabled = false;
@@ -422,7 +233,7 @@ function showNewWord(word, words, category, dataClone) {
   img.src = "./assets/images/" + category + "/" + word + ".png";
 
   // Loop over each word
-  componentWords = word.split(" ");
+  let componentWords = word.split(" ");
   // ["summer", "festival"]
 
   componentWords.forEach((word) => {
@@ -464,6 +275,7 @@ function showNewWord(word, words, category, dataClone) {
       letterContainer.appendChild(letterInput);
       wordContainer.appendChild(letterContainer);
     });
+    // wordsContainer.appendChild(wordContainer);
     // mainContainer.appendChild(wordContainer);
     mainContainer.appendChild(wordsContainer);
   });
@@ -476,10 +288,22 @@ function showNewWord(word, words, category, dataClone) {
   // checkLetters(word, words, score);
   let score = Array(letterInput.length).fill(false);
   return score;
+  // }, 2000);
 }
 
-function delayedShowNewWord(word, words, category, dataClone) {
-  setTimeout(1000, () => showNewWord(word, words, category, dataClone));
+function delayedShowNewWord(
+  word,
+  words,
+  category,
+  dataClone,
+  correctWordCount
+) {
+  const delay = 500; //500 milliseconds
+  setTimeout(() => showNewWord(word, words, category, dataClone), delay);
+  setTimeout(() => {
+    let score = Array(word.replaceAll(" ", "").length).fill(false);
+    checkLetters(word, words, score, category, correctWordCount);
+  }, delay + 100);
 }
 
 // Add Score
@@ -527,20 +351,14 @@ function gameStart(words, category, correctWordCount) {
       // newPoints.style.display = "none";
     } else {
       // Clear word containers before new word
-      let wordContainer = document.querySelectorAll(".word-container");
-      for (container of wordContainer) {
-        container.remove();
-      }
+      clearImage();
+      clearWordContainer();
       let word = words.pop();
-      showNewWord(word, words, category, dataClone);
-
-      let score = Array(word.replaceAll(" ", "").length).fill(false);
-      checkLetters(word, words, score, category, correctWordCount);
+      delayedShowNewWord(word, words, category, dataClone, correctWordCount);
     }
   };
 
   let word = words.pop();
-  // console.log(word);
   let score = Array(word.replaceAll(" ", "").length).fill(false);
 
   addLevelSelector(word, words, category);
