@@ -151,7 +151,7 @@ select#level-selector {
 }
 
 .words-container {
-  max-width: 60%;
+  max-width: 75%;
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;

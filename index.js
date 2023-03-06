@@ -4,6 +4,7 @@ let data = words.data;
 let title = document.querySelector("#title");
 title.addEventListener("click", () => {
   clearPage();
+  clearWordContainer();
 });
 
 // Make deep copy
@@ -311,10 +312,8 @@ let clearPage = () => {
   categoriesContainer.style.display = "flex";
   let scoreContainer = document.querySelector("#score-container");
   scoreContainer.style.display = "block";
-  let wordContainer = document.querySelectorAll(".word-container");
-  for (container of wordContainer) {
-    container.remove();
-  }
+  // let wordContainer = document.querySelectorAll(".word-container");
+  clearWordContainer();
   // console.log("page cleared");
   // console.log(data);
 };
