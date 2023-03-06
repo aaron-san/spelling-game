@@ -478,12 +478,12 @@ select#level-selector {
   }
 
   .words-container {
-    max-width: 90%;
-    margin: 0 5px;
+    max-width: 95%;
+    margin: 0 2px;
     display: flex;
     justify-content: center;
     /* flex-direction: column; */
-    gap: 10px 70px;
+    gap: 10px 25px;
     flex-wrap: wrap;
   }
   .word-container {
