@@ -554,6 +554,7 @@ select#level-selector {
 
 #progress-bar {
   width: 0;
+  transition: width 1s;
   height: 20px;
   background-color: blue;
   opacity: 0.3;

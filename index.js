@@ -172,7 +172,7 @@ function checkScore(words, score, category, correctWordCount) {
       }
       clearImage();
       clearWordContainer();
-      // console.log("cleared");
+      clearProgressBar();
     }
 
     if (words.length > 0) {
@@ -317,8 +317,9 @@ let clearPage = () => {
   let scoreContainer = document.querySelector("#score-container");
   scoreContainer.style.display = "block";
   // let wordContainer = document.querySelectorAll(".word-container");
+  clearImage();
   clearWordContainer();
-  // clearProgressBar();
+  clearProgressBar();
 };
 
 //////// START GAME ////////////////////
@@ -346,6 +347,7 @@ function gameStart(words, category, correctWordCount) {
       // Clear word containers before new word
       clearImage();
       clearWordContainer();
+      // clearProgressBar();
       let word = words.pop();
       delayedShowNewWord(word, words, category, dataClone, correctWordCount);
     }
