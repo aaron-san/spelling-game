@@ -5,6 +5,7 @@ let title = document.querySelector("#title");
 title.addEventListener("click", () => {
   clearPage();
   clearWordContainer();
+  clearProgressBar();
 });
 
 // Make deep copy
@@ -30,6 +31,7 @@ for (let i = 0; i < categoriesArray.length; i++) {
   let category = categoryElement.classList[1];
 
   categoryElement.addEventListener("click", () => {
+    // incrementProgressBar(totalComplete, totalLength);
     let mainContainer = document.querySelector("#main-container");
     mainContainer.style.display = "flex";
     let categoriesContainer = document.querySelector(".categories-container");
@@ -50,19 +52,20 @@ for (let i = 0; i < categoriesArray.length; i++) {
 }
 
 let bar = document.createElement("div");
-const progressBar = (totalComplete, totalLength) => {
-  bar.style.width = (totalComplete / totalLength) * 100 + "%";
-  bar.style.height = "20px";
-  bar.style.background = "blue";
-  bar.style.opacity = "0.3";
-  bar.style.left = "0";
-  bar.style.alignSelf = "start";
-  bar.style.borderRadius = "0 0 5px 5px";
-  // bar.style.margin = "0";
+bar.id = "progress-bar";
+const container = document.querySelector(".container");
+container.prepend(bar);
 
-  const container = document.querySelector(".container");
-  container.prepend(bar);
+const incrementProgressBar = (totalComplete, totalLength) => {
+  let bar = document.querySelector("#progress-bar");
+  bar.style.width = (totalComplete / totalLength) * 100 + "%";
 };
+
+const clearProgressBar = () => {
+  let bar = document.querySelector("#progress-bar");
+  bar.style.width = "0";
+};
+
 // progressBar();
 
 let clearImage = () => {
@@ -73,7 +76,7 @@ let clearImage = () => {
 
 const removeChilds = (parent) => {
   while (parent.lastChild) {
-    console.log(parent.lastChild);
+    // console.log(parent.lastChild);
     parent.removeChild(parent.lastChild);
   }
 };
@@ -212,7 +215,8 @@ function showNewWord(word, words, category, dataClone) {
   completion.innerText = `${currentNum} / ${totalLength} 語`;
   let totalComplete = currentNum - 1;
 
-  progressBar(totalComplete, totalLength);
+  // console.log(totalComplete, totalLength);
+  incrementProgressBar(totalComplete, totalLength);
 
   let levelSelector = document.querySelector("#level-selector");
   levelSelector.disabled = false;
@@ -314,8 +318,7 @@ let clearPage = () => {
   scoreContainer.style.display = "block";
   // let wordContainer = document.querySelectorAll(".word-container");
   clearWordContainer();
-  // console.log("page cleared");
-  // console.log(data);
+  // clearProgressBar();
 };
 
 //////// START GAME ////////////////////
