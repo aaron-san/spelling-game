@@ -89,15 +89,6 @@ let clearWordContainer = () => {
     removeChilds(wordsContainer);
     // console.log("container remove");
   }, 500);
-
-  // for (container of wordContainer) {
-  //   container.classList.add("fadeOut");
-  //   console.log("faded out");
-  //   setTimeout(() => {
-  //     container.remove();
-  //     console.log("container remove");
-  //   }, 500);
-  // }
 };
 
 // let getRandomNum = () => Math.floor(Math.random() * words.length);
