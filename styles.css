@@ -250,6 +250,9 @@ select#level-selector {
   background-color: rgb(184, 255, 211);
   /* color: rgb(21, 126, 126); */
 }
+.uppercase {
+  text-transform: uppercase;
+}
 
 .wrong-letter {
   background-color: rgb(255, 202, 202);
